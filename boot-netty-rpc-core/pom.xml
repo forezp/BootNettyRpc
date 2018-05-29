@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.forezp</groupId>
     <artifactId>boot-netty-rpc-core</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
 
     <name>boot-netty-rpc-core</name>
@@ -81,7 +81,6 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot</artifactId>
-                <scope>compile</scope>
                 <version>${spring-boot.version}</version>
             </dependency>
 
