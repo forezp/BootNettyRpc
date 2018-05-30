@@ -15,12 +15,9 @@ import io.github.forezp.netty.rpc.core.common.container.ExcutorContainer;
 import io.github.forezp.netty.rpc.core.common.entity.AppEntity;
 import io.github.forezp.netty.rpc.core.protocol.client.NettyClientExcutor;
 import io.github.forezp.netty.rpc.core.protocol.server.NettyServerExcutor;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.bind.RelaxedPropertyResolver;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.core.env.PropertyResolver;
 import org.springframework.util.StringUtils;
 
 import static io.github.forezp.netty.rpc.core.common.constant.ConfigConstants.*;
@@ -42,20 +39,19 @@ public class NettyRpcConfig {
     @Bean
     CommonProperties commonProperties() {
         CommonProperties properties = new CommonProperties();
-        PropertyResolver resolver = new RelaxedPropertyResolver( env );
-        String eurekaEnable2 = env.getProperty( NETTY_EUREKA_ENABLE, NETTY_EUREKA_ENABLE_DEFAULT );
+//        PropertyResolver resolver = new RelaxedPropertyResolver( env );
 
-        String eurekaEnable = resolver.getProperty( NETTY_EUREKA_ENABLE, NETTY_EUREKA_ENABLE_DEFAULT );
-        String loadBalanceType = resolver.getProperty( ConfigConstants.NETTY_LOADBALANCE_TYPE, "" );
+        String eurekaEnable = env.getProperty( NETTY_EUREKA_ENABLE, NETTY_EUREKA_ENABLE_DEFAULT );
+        String loadBalanceType = env.getProperty( ConfigConstants.NETTY_LOADBALANCE_TYPE, "" );
         properties.setEurekaEnable( eurekaEnable );
         properties.setLoadBalanceType( loadBalanceType );
 
-        String serverPoolCoreSize = resolver.getProperty( SERVER_POOL_CORE_SIZE, SERVER_POOL_CORE_SIZE_DEFAULT );
-        String serverPoolMaxSize = resolver.getProperty( SERVER_POOL_MAX_SIZE, SERVER_POOL_MAX_SIZE_DEFAULT );
-        String serverPoolQunueType = resolver.getProperty( SERVER_POOL_QUEUE_TYPE, SERVER_POOL_QUEUE_TYPE_DEFAULT );
-        String serverPoolQunueSize = resolver.getProperty( SERVER_POOL_QUEUE_SIZE, SERVER_POOL_QUEUE_SIZE_DEFAULT );
-        String serverPoolKeepAliveTime = resolver.getProperty( SERVER_POOL_KEEPALIVE_TIME, SERVER_POOL_KEEPALIVE_TIME_DEFAULT );
-        String serverPoolRejectType = resolver.getProperty( SERVER_POOL_REJECT_TYPE, SERVER_POOL_REJECT_TYPE_DEFAULT );
+        String serverPoolCoreSize = env.getProperty( SERVER_POOL_CORE_SIZE, SERVER_POOL_CORE_SIZE_DEFAULT );
+        String serverPoolMaxSize = env.getProperty( SERVER_POOL_MAX_SIZE, SERVER_POOL_MAX_SIZE_DEFAULT );
+        String serverPoolQunueType = env.getProperty( SERVER_POOL_QUEUE_TYPE, SERVER_POOL_QUEUE_TYPE_DEFAULT );
+        String serverPoolQunueSize = env.getProperty( SERVER_POOL_QUEUE_SIZE, SERVER_POOL_QUEUE_SIZE_DEFAULT );
+        String serverPoolKeepAliveTime = env.getProperty( SERVER_POOL_KEEPALIVE_TIME, SERVER_POOL_KEEPALIVE_TIME_DEFAULT );
+        String serverPoolRejectType = env.getProperty( SERVER_POOL_REJECT_TYPE, SERVER_POOL_REJECT_TYPE_DEFAULT );
 
         properties.setServerPoolCoreSize( Integer.parseInt( serverPoolCoreSize ) );
         properties.setServerPoolMaxSize( Integer.parseInt( serverPoolMaxSize ) );
@@ -65,12 +61,12 @@ public class NettyRpcConfig {
         properties.setServerPoolRejectType( serverPoolRejectType );
 
 
-        String clientPoolCoreSize = resolver.getProperty( CLIENT_POOL_CORE_SIZE, CLIENT_POOL_CORE_SIZE_DEFAULT );
-        String clientPoolMaxSize = resolver.getProperty( CLIENT_POOL_MAX_SIZE, CLIENT_POOL_MAX_SIZE_DEFAULT );
-        String clientPoolQunueType = resolver.getProperty( CLIENT_POOL_QUEUE_TYPE, CLIENT_POOL_QUEUE_TYPE_DEFAULT );
-        String clientPoolQunueSize = resolver.getProperty( CLIENT_POOL_QUEUE_SIZE, CLIENT_POOL_QUEUE_SIZE_DEFAULT );
-        String clientPoolKeepAliveTime = resolver.getProperty( CLIENT_POOL_KEEPALIVE_TIME, CLIENT_POOL_KEEPALIVE_TIME_DEFAULT );
-        String clientPoolRejectType = resolver.getProperty( CLIENT_POOL_REJECT_TYPE, CLIENT_POOL_REJECT_TYPE_DEFAULT );
+        String clientPoolCoreSize = env.getProperty( CLIENT_POOL_CORE_SIZE, CLIENT_POOL_CORE_SIZE_DEFAULT );
+        String clientPoolMaxSize = env.getProperty( CLIENT_POOL_MAX_SIZE, CLIENT_POOL_MAX_SIZE_DEFAULT );
+        String clientPoolQunueType = env.getProperty( CLIENT_POOL_QUEUE_TYPE, CLIENT_POOL_QUEUE_TYPE_DEFAULT );
+        String clientPoolQunueSize = env.getProperty( CLIENT_POOL_QUEUE_SIZE, CLIENT_POOL_QUEUE_SIZE_DEFAULT );
+        String clientPoolKeepAliveTime = env.getProperty( CLIENT_POOL_KEEPALIVE_TIME, CLIENT_POOL_KEEPALIVE_TIME_DEFAULT );
+        String clientPoolRejectType = env.getProperty( CLIENT_POOL_REJECT_TYPE, CLIENT_POOL_REJECT_TYPE_DEFAULT );
 
         properties.setClientPoolCoreSize( Integer.parseInt( clientPoolCoreSize ) );
         properties.setClientPoolMaxSize( Integer.parseInt( clientPoolMaxSize ) );
