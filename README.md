@@ -10,7 +10,6 @@ README: [English](https://github.com/forezp/BootNettyRpc/blob/master/README-en.m
 
 BootNettyRpc 是一个采用Netty实现的Rpc框架，适用于Spring Boot项目，**未来会支持Spring Cloud**。
 
-注意：目前只支持Spring Boot 1.5x版本，还不支持2.0，后续会兼容。
 
 ## 怎么使用？
 
@@ -25,7 +24,7 @@ BootNettyRpc 包括Server端和Client端。
  <dependency>
        <groupId>io.github.forezp</groupId>
         <artifactId>boot-netty-rpc-core</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
  </dependency>
  
 ```
@@ -75,7 +74,7 @@ public interface IGreeting {
  <dependency>
        <groupId>io.github.forezp</groupId>
         <artifactId>boot-netty-rpc-core</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
 </dependency>
 
 ```

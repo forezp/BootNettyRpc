@@ -22,7 +22,7 @@ BootNettyRpc  is a open resource of rpc with netty and spring boot !
  <dependency>
        <groupId>io.github.forezp</groupId>
         <artifactId>boot-netty-rpc-core</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
  </dependency>
 
 ```
@@ -88,7 +88,7 @@ public class Greeting implements IGreeting {
  <dependency>
        <groupId>io.github.forezp</groupId>
         <artifactId>boot-netty-rpc-core</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
  </dependency>
 
 ```
