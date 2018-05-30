@@ -2,7 +2,6 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?label=license)](https://github.com/forezp/BootNettyRpc/blob/master/LICENSE)
 [![Maven Central](https://img.shields.io/maven-central/v/com.nepxion/thunder.svg?label=maven%20central)](http://mvnrepository.com/search?q=io.github.forezp)
-[![Build Status](https://travis-ci.org/forezp/BootNettyRpc.svg?branch=master)](https://travis-ci.org/forezp/BootNettyRpc)
 
 
 README: [English](https://github.com/forezp/BootNettyRpc/blob/master/README-en.md) | [中文](https://github.com/forezp/BootNettyRpc/blob/master/README.md)
