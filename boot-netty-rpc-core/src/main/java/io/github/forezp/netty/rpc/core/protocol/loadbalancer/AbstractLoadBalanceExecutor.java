@@ -3,8 +3,7 @@ package io.github.forezp.netty.rpc.core.protocol.loadbalancer;
 import io.github.forezp.netty.rpc.core.common.delegate.NettyRpcDelegateImpl;
 import io.github.forezp.netty.rpc.core.common.entity.NettyClient;
 import io.github.forezp.netty.rpc.core.common.entity.RpcClientEntity;
-import io.github.forezp.netty.rpc.core.exception.CommonException;
-import io.github.forezp.netty.rpc.core.exception.CommonException;
+import io.github.forezp.netty.rpc.core.common.exception.CommonException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
@@ -24,11 +23,13 @@ public abstract class AbstractLoadBalanceExecutor extends NettyRpcDelegateImpl i
 
     @Override
     public RpcClientEntity loadBalance(RpcClientEntity rpcClientEntity, String interfaceName) {
-
-        if (!StringUtils.isEmpty( nettyRpcProperties.getCommonProperties().getEurekaEnable() ) && nettyRpcProperties.getCommonProperties().getEurekaEnable().equals( "true" )) {
-            //TODO 从eureka走
+        List<NettyClient> clients = null;
+        if (excutorContainer.getClientDiscovery() != null) {
+            clients = excutorContainer.getClientDiscovery().getNettyClietMap().get( rpcClientEntity.getName() );
         }
-        List<NettyClient> clients = nettyRpcProperties.getClients();
+        if (clients == null) {
+            clients = nettyRpcProperties.getClients();
+        }
         List<NettyClient> candidates = null;
         if (clients != null && clients.size() > 0) {
             candidates = findCandidateClients( rpcClientEntity.getName(), clients );

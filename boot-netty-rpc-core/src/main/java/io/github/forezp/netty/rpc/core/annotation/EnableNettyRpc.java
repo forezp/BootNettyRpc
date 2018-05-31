@@ -1,8 +1,8 @@
 package io.github.forezp.netty.rpc.core.annotation;
 
 import io.github.forezp.netty.rpc.core.annotation.scan.NettyRpcRegistrar;
-import io.github.forezp.netty.rpc.core.config.NettyRpcConfig;
 
+import io.github.forezp.netty.rpc.core.config.NettyRpcConfig;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
@@ -16,7 +16,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Documented
-@Import({NettyRpcRegistrar.class, NettyRpcConfig.class})
+@Import({NettyRpcRegistrar.class})
 public @interface EnableNettyRpc {
 
 

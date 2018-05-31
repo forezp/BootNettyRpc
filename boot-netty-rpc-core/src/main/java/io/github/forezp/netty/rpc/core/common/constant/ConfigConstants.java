@@ -42,5 +42,7 @@ public class ConfigConstants {
     public static final String CLIENT_POOL_REJECT_TYPE = "netty.client.pool.reject.type";
     public static final String CLIENT_POOL_REJECT_TYPE_DEFAULT = "DiscardedPolicyWithReport";
 
+    public static final String NETTY_CLIENT_RENEW_INTERVAL = "netty.client.renew.interval";
+    public static final String NETTY_CLIENT_RENEW_INTERVAL_DEFAULT = "30";//second
 
 }

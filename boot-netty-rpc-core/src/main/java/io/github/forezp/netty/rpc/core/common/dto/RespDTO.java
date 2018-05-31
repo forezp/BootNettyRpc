@@ -1,7 +1,7 @@
 package io.github.forezp.netty.rpc.core.common.dto;
 
 
-import io.github.forezp.netty.rpc.core.exception.ErrorCode;
+import io.github.forezp.netty.rpc.core.common.exception.ErrorCode;
 
 import java.io.Serializable;
 

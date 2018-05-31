@@ -6,6 +6,7 @@ import io.github.forezp.netty.rpc.core.protocol.server.RequestHandler;
 import io.github.forezp.netty.rpc.core.protocol.client.IClientExcutor;
 import io.github.forezp.netty.rpc.core.protocol.client.RequestInterceptor;
 import io.github.forezp.netty.rpc.core.protocol.serializer.ServerExcutor;
+import io.github.forezp.netty.rpc.core.protocol.registry.ClientDiscovery;
 
 
 /**
@@ -24,6 +25,8 @@ public class ExcutorContainer {
     private ResponseHandler responseHandler;
 
     private LoadBalanceExcutor loadBalanceExcutor;
+
+    private ClientDiscovery clientDiscovery;
 
     public IClientExcutor getClientExcutor() {
         return clientExcutor;
@@ -71,5 +74,13 @@ public class ExcutorContainer {
 
     public void setLoadBalanceExcutor(LoadBalanceExcutor loadBalanceExcutor) {
         this.loadBalanceExcutor = loadBalanceExcutor;
+    }
+
+    public ClientDiscovery getClientDiscovery() {
+        return clientDiscovery;
+    }
+
+    public void setClientDiscovery(ClientDiscovery clientDiscovery) {
+        this.clientDiscovery = clientDiscovery;
     }
 }

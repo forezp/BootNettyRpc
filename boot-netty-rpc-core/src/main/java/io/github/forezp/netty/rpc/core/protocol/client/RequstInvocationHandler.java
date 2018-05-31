@@ -7,16 +7,10 @@ import io.github.forezp.netty.rpc.core.common.entity.NettyRpcResponse;
 import io.github.forezp.netty.rpc.core.common.container.ExcutorContainer;
 import io.github.forezp.netty.rpc.core.common.entity.AppEntity;
 import io.github.forezp.netty.rpc.core.common.entity.ConnectionEntity;
-import io.github.forezp.netty.rpc.core.common.entity.NettyClient;
 import io.github.forezp.netty.rpc.core.common.entity.RpcClientEntity;
-import io.github.forezp.netty.rpc.core.config.NettyRpcProperties;
-import io.github.forezp.netty.rpc.core.exception.CommonException;
+import io.github.forezp.netty.rpc.core.common.exception.CommonException;
 import io.github.forezp.netty.rpc.core.protocol.loadbalancer.LoadBalanceExcutor;
 import io.github.forezp.netty.rpc.core.util.NettyRpcApplication;
-import io.github.forezp.netty.rpc.core.common.container.CacheContainer;
-import io.github.forezp.netty.rpc.core.common.container.ExcutorContainer;
-import io.github.forezp.netty.rpc.core.exception.CommonException;
-import io.github.forezp.netty.rpc.core.protocol.loadbalancer.LoadBalanceExcutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -24,7 +18,6 @@ import org.springframework.util.StringUtils;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,13 +32,13 @@ public class RequstInvocationHandler implements InvocationHandler {
     private Logger LOG = LoggerFactory.getLogger( RequstInvocationHandler.class );
 
     public Class interfaceClz;
-    private CacheContainer cacheContainer;
-    private ExcutorContainer excutorContainer;
+    //private CacheContainer cacheContainer;
+    //  private ExcutorContainer excutorContainer;
 
     public RequstInvocationHandler(Class interfaceClz) {
         this.interfaceClz = interfaceClz;
-        cacheContainer = (CacheContainer) NettyRpcApplication.getBean( "cacheContainer" );
-        excutorContainer = (ExcutorContainer) NettyRpcApplication.getBean( "excutorContainer" );
+        //  cacheContainer = (CacheContainer) NettyRpcApplication.getBean( "cacheContainer" );
+        //  excutorContainer = (ExcutorContainer) NettyRpcApplication.getBean( "excutorContainer" );
     }
 
     @Override
@@ -90,6 +83,7 @@ public class RequstInvocationHandler implements InvocationHandler {
         } else {
             AppEntity appEntity = new AppEntity();
             BeanUtils.copyProperties( entity, appEntity );
+            ExcutorContainer excutorContainer = (ExcutorContainer) NettyRpcApplication.getBean( "excutorContainer" );
             NettyClientExcutor excutor = (NettyClientExcutor) excutorContainer.getClientExcutor();
             try {
                 excutor.start( appEntity );
@@ -104,6 +98,7 @@ public class RequstInvocationHandler implements InvocationHandler {
     }
 
     private ConnectionEntity findCandidateConnection(RpcClientEntity entity) {
+        CacheContainer cacheContainer = (CacheContainer) NettyRpcApplication.getBean( "cacheContainer" );
         List<ConnectionEntity> connectionEntities = cacheContainer.getConnection( entity.getName() );
         if (connectionEntities != null && connectionEntities.size() > 0) {
             AppEntity appEntity = new AppEntity();
@@ -133,6 +128,7 @@ public class RequstInvocationHandler implements InvocationHandler {
             return entity;
         }
         //从负载中获取配
+        ExcutorContainer excutorContainer = (ExcutorContainer) NettyRpcApplication.getBean( "excutorContainer" );
         LoadBalanceExcutor loadBalanceExcutor = excutorContainer.getLoadBalanceExcutor();
         entity = loadBalanceExcutor.loadBalance( entity, interfaceClz.getName() );
         return entity;

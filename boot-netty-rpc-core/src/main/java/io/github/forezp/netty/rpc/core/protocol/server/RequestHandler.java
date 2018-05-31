@@ -2,7 +2,7 @@ package io.github.forezp.netty.rpc.core.protocol.server;
 
 import io.github.forezp.netty.rpc.core.common.entity.NettyRpcRequest;
 import io.github.forezp.netty.rpc.core.common.entity.NettyRpcResponse;
-import io.github.forezp.netty.rpc.core.exception.CommonException;
+import io.github.forezp.netty.rpc.core.common.exception.CommonException;
 import io.github.forezp.netty.rpc.core.util.NettyRpcApplication;
 import org.springframework.util.StringUtils;
 

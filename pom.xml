@@ -14,9 +14,7 @@
 
     <modules>
         <module>boot-netty-rpc-core</module>
-        <module>example-rpc-lib</module>
-        <module>example-rpc-client</module>
-        <module>example-rpc-server</module>
+        <module>examples</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -27,6 +27,8 @@ public class CommonProperties {
     private Long clientPoolKeepAliveTime;
     private String clientPoolRejectType;
 
+    private String nettyClientRenewInterval;
+
     public static final int CPUS = Math.max( 2, Runtime.getRuntime().availableProcessors() );
 
 
@@ -140,5 +142,13 @@ public class CommonProperties {
 
     public void setLoadBalanceType(String loadBalanceType) {
         this.loadBalanceType = loadBalanceType;
+    }
+
+    public String getNettyClientRenewInterval() {
+        return nettyClientRenewInterval;
+    }
+
+    public void setNettyClientRenewInterval(String nettyClientRenewInterval) {
+        this.nettyClientRenewInterval = nettyClientRenewInterval;
     }
 }

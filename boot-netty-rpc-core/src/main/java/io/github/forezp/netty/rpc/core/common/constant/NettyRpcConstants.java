@@ -8,6 +8,7 @@ package io.github.forezp.netty.rpc.core.common.constant;
  **/
 public class NettyRpcConstants {
 
-    public static final String RPC_SCAN_PACKAGE = "rpc.scan.package";
-    public static final String BEAN_APP_ENTITY = "appEntity";
+    public static final String NETTY_SERVER_NAME = "netty-server-name";
+    public static final String NETTY_SERVER_HOST = "netty-server-host";
+    public static final String NETTY_SERVER_PORT = "netty-server-port";
 }

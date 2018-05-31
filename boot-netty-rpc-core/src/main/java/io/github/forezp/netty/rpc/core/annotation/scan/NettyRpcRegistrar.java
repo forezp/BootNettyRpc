@@ -43,7 +43,7 @@ import java.util.*;
 public class NettyRpcRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoaderAware, BeanClassLoaderAware, EnvironmentAware {
 
     static {
-        System.out.println( "" );
+        System.out.println( "  " );
         System.out.println( "╔═╗╔═╗   ╔╗" );
         System.out.println( "║║╚╝║║  ╔╝╚╗" );
         System.out.println( "║╔╗╔╗╠══╬╗╔╬═╦╦╗╔╗" );
@@ -52,6 +52,7 @@ public class NettyRpcRegistrar implements ImportBeanDefinitionRegistrar, Resourc
         System.out.println( "╚╝╚╝╚╩╝╚╝╚═╩╝╚╩╝╚╝" );
         System.out.println( "Boot Netty Rpc v1.0.0  .... " );
         System.out.println( "Author: Forezp. Email: miles02@163.com   " );
+        System.out.println( "  " );
     }
 
     Logger LOG = LoggerFactory.getLogger( NettyRpcRegistrar.class );
@@ -162,11 +163,12 @@ public class NettyRpcRegistrar implements ImportBeanDefinitionRegistrar, Resourc
         definition.addPropertyValue( "port", attributes.get( "port" ) );
         definition.addPropertyValue( "rpcClz", attributes.get( "rpcClz" ) );
         definition.setAutowireMode( AbstractBeanDefinition.AUTOWIRE_BY_NAME );
-        String alias = className ;
+        String alias = className;
         AbstractBeanDefinition beanDefinition = definition.getBeanDefinition();
 
         BeanDefinitionHolder holder = new BeanDefinitionHolder( beanDefinition, className,
                 new String[]{alias} );
+        LOG.info( "registerRpcClient:" + className );
         BeanDefinitionReaderUtils.registerBeanDefinition( holder, registry );
     }
 

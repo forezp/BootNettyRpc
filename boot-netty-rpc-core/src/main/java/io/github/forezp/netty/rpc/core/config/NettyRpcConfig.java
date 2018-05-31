@@ -67,6 +67,7 @@ public class NettyRpcConfig {
         String clientPoolQunueSize = env.getProperty( CLIENT_POOL_QUEUE_SIZE, CLIENT_POOL_QUEUE_SIZE_DEFAULT );
         String clientPoolKeepAliveTime = env.getProperty( CLIENT_POOL_KEEPALIVE_TIME, CLIENT_POOL_KEEPALIVE_TIME_DEFAULT );
         String clientPoolRejectType = env.getProperty( CLIENT_POOL_REJECT_TYPE, CLIENT_POOL_REJECT_TYPE_DEFAULT );
+        String nettyClientRenewInterval = env.getProperty( NETTY_CLIENT_RENEW_INTERVAL, NETTY_CLIENT_RENEW_INTERVAL_DEFAULT );
 
         properties.setClientPoolCoreSize( Integer.parseInt( clientPoolCoreSize ) );
         properties.setClientPoolMaxSize( Integer.parseInt( clientPoolMaxSize ) );
@@ -74,6 +75,7 @@ public class NettyRpcConfig {
         properties.setClientPoolQunueSize( Integer.parseInt( clientPoolQunueSize ) );
         properties.setClientPoolKeepAliveTime( Long.parseLong( clientPoolKeepAliveTime ) );
         properties.setClientPoolRejectType( clientPoolRejectType );
+        properties.setNettyClientRenewInterval( nettyClientRenewInterval );
 
         return properties;
 
@@ -93,7 +95,7 @@ public class NettyRpcConfig {
         return factorConfig;
     }
 
-    @Bean(name = "cacheContainer")
+    @Bean
     CacheContainer cacheContainer() {
         return new CacheContainer();
     }

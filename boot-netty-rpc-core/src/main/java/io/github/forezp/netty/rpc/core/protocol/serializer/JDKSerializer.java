@@ -1,6 +1,6 @@
 package io.github.forezp.netty.rpc.core.protocol.serializer;
 
-import io.github.forezp.netty.rpc.core.exception.CommonException;
+import io.github.forezp.netty.rpc.core.common.exception.CommonException;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
