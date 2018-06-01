@@ -17,19 +17,20 @@
         <version>1.5.3.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring-cloud.version>Dalston.RELEASE</spring-cloud.version>
-    </properties>
+        <netty.rpc.core>1.0.2</netty.rpc.core>
 
+    </properties>
     <dependencies>
         <dependency>
             <groupId>io.github.forezp</groupId>
             <artifactId>boot-netty-rpc-core</artifactId>
-            <version>1.0.2</version>
+            <version>${netty.rpc.core}</version>
+
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -44,7 +45,7 @@
         <dependency>
             <groupId>com.forezp</groupId>
             <artifactId>example-rpc-lib</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -60,7 +61,6 @@
             </plugin>
         </plugins>
     </build>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
