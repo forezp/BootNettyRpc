@@ -8,11 +8,13 @@ README: [English](https://github.com/forezp/BootNettyRpc/blob/master/README-en.m
 
 ## 什么是 BootNettyRpc?
 
-BootNettyRpc 是一个采用Netty实现的Rpc框架，适用于Spring Boot项目，**未来会支持Spring Cloud**。
+BootNettyRpc 是一个采用Netty实现的Rpc框架，适用于Spring Boot项目，支持Spring Cloud。
+目前支持的版本为Spring Boot 1.5.x，Spring Cloud版本为D和E版本。
 
 
 ## 怎么使用？
 
+分为本地启动和结合Spring Cloud启动。具体见example 案例，现在以本地案例来说明，Spring Cloud案例省略。
 
 BootNettyRpc 包括Server端和Client端。
 
@@ -24,7 +26,7 @@ BootNettyRpc 包括Server端和Client端。
  <dependency>
        <groupId>io.github.forezp</groupId>
         <artifactId>boot-netty-rpc-core</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
  </dependency>
  
 ```
@@ -74,7 +76,7 @@ public interface IGreeting {
  <dependency>
        <groupId>io.github.forezp</groupId>
         <artifactId>boot-netty-rpc-core</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
 </dependency>
 
 ```
@@ -128,10 +130,11 @@ netty:
 - rpc
 - 负载均衡
 - 接口线程池隔离
+- 接入Eureka
 
 ## 未来计划
 
 - 优化rpc性能
-- 接入eureka、consule
+- 接入consule
 - 接入链路追踪
 - 接入监控
