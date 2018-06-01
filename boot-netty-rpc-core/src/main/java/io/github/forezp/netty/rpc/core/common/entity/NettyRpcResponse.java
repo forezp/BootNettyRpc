@@ -1,8 +1,5 @@
 package io.github.forezp.netty.rpc.core.common.entity;
 
-
-import io.github.forezp.netty.rpc.core.common.entity.NettyRpcMessage;
-
 import java.io.Serializable;
 
 /**
@@ -15,16 +12,10 @@ import java.io.Serializable;
 public class NettyRpcResponse<T> extends NettyRpcMessage implements Serializable {
 
     private static final long serialVersionUID = 6395330487058794296L;
-
-
-    private Long startHandleTime;
-    private Long endHandleTime;
-    private Long endTime;
     private int code;
     private String msg;
     private T result;
 
-    private Class interfaceClz;
 
     private boolean isSyn;
 
@@ -43,29 +34,7 @@ public class NettyRpcResponse<T> extends NettyRpcMessage implements Serializable
         this.result = result;
     }
 
-    public Long getEndTime() {
-        return endTime;
-    }
 
-    public void setEndTime(Long endTime) {
-        this.endTime = endTime;
-    }
-
-    public Long getStartHandleTime() {
-        return startHandleTime;
-    }
-
-    public void setStartHandleTime(Long startHandleTime) {
-        this.startHandleTime = startHandleTime;
-    }
-
-    public Long getEndHandleTime() {
-        return endHandleTime;
-    }
-
-    public void setEndHandleTime(Long endHandleTime) {
-        this.endHandleTime = endHandleTime;
-    }
 
     public int getCode() {
         return code;
@@ -101,13 +70,6 @@ public class NettyRpcResponse<T> extends NettyRpcMessage implements Serializable
     }
 
 
-    public Class getInterfaceClz() {
-        return interfaceClz;
-    }
-
-    public void setInterfaceClz(Class interfaceClz) {
-        this.interfaceClz = interfaceClz;
-    }
 
     @Override
     public String toString() {

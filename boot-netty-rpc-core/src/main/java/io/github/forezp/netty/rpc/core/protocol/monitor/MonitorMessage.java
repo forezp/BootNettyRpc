@@ -1,30 +1,25 @@
-package io.github.forezp.netty.rpc.core.common.entity;
+package io.github.forezp.netty.rpc.core.protocol.monitor;
 
 import java.io.Serializable;
 
 /**
- * Created by forezp on 2018/5/26.
- */
-public class NettyRpcMessage implements Serializable {
+ * Email miles02@163.com
+ *
+ * @author fangzhipeng
+ * create 2018-06-01
+ **/
+public class MonitorMessage implements Serializable {
 
     private static final long serialVersionUID = 6395330487058794296L;
-
-    protected String messageId;
-
-    protected Long startTime;
-
-    protected String traceId;
-
-    protected boolean isHeatBeat;
-
-    protected Long startHandleTime;
-    protected Long endHandleTime;
-    protected Long endTime;
-
-    protected String method;
-
-
-    protected Class interfaceClass;
+    private String messageId;
+    private Long startTime;
+    private String traceId;
+    private boolean isHeatBeat;
+    private Long startHandleTime;
+    private Long endHandleTime;
+    private Long endTime;
+    private String method;
+    private String interfaceClassName;
 
     public String getMessageId() {
         return messageId;
@@ -90,11 +85,11 @@ public class NettyRpcMessage implements Serializable {
         this.method = method;
     }
 
-    public Class getInterfaceClass() {
-        return interfaceClass;
+    public String getInterfaceClassName() {
+        return interfaceClassName;
     }
 
-    public void setInterfaceClass(Class interfaceClass) {
-        this.interfaceClass = interfaceClass;
+    public void setInterfaceClassName(String interfaceClassName) {
+        this.interfaceClassName = interfaceClassName;
     }
 }

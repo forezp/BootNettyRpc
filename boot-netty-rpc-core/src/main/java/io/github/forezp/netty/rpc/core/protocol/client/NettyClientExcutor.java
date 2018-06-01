@@ -15,13 +15,15 @@ import io.netty.handler.codec.compression.JdkZlibDecoder;
 import io.netty.handler.codec.compression.JdkZlibEncoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import io.netty.handler.timeout.IdleStateHandler;
+import io.netty.handler.timeout.ReadTimeoutHandler;
+import io.netty.handler.timeout.WriteTimeoutHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.*;
 
 /**
- * ${DESCRIPTION}
  *
  * @author fangzhipeng
  * create 2018-05-21
@@ -63,10 +65,16 @@ public class NettyClientExcutor extends AbstractClientExcutor {
                                 @Override
                                 public void initChannel(SocketChannel channel) throws Exception {
                                     channel.pipeline()
+                                            .addLast(new IdleStateHandler(
+                                                    90000,
+                                                    60000,
+                                                   45000, TimeUnit.MILLISECONDS))
                                             .addLast(new NettyObjectDecoder(1024))
                                             .addLast(new NettyObjectEncoder())
                                             .addLast(new JdkZlibDecoder())
                                             .addLast(new JdkZlibEncoder())
+                                            .addLast(new WriteTimeoutHandler(15000))
+                                            .addLast(new ReadTimeoutHandler(15000))
                                             .addLast(new NettyClientHandler(excutorContainer));
                                 }
                             });

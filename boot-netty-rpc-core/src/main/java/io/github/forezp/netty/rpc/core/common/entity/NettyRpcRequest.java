@@ -1,7 +1,6 @@
 package io.github.forezp.netty.rpc.core.common.entity;
 
 
-import io.github.forezp.netty.rpc.core.common.entity.NettyRpcMessage;
 import io.github.forezp.netty.rpc.core.util.SnowflakeIdWorker;
 
 import java.io.Serializable;
@@ -22,11 +21,8 @@ public class NettyRpcRequest extends NettyRpcMessage implements Serializable {
     String rpcClz;
     private boolean isSyn;
 
-    private String method;
     private Class[] paramTypes;
     private Object[] params;
-
-    private Class interfaceClass;
 
     private String fromUrl;
 

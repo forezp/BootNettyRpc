@@ -14,10 +14,11 @@ public class RpcClientEntity implements Serializable {
 
 
     private String name;
-    boolean isSyn;
-    String host;
-    int port;
-    String rpcClz;
+    private boolean isSyn;
+    private String host;
+    private int port;
+    private String rpcClz;
+    private int traceIdIndex;
 
 
     public String getName() {
@@ -65,14 +66,23 @@ public class RpcClientEntity implements Serializable {
         isSyn = syn;
     }
 
+    public int getTraceIdIndex() {
+        return traceIdIndex;
+    }
+
+    public void setTraceIdIndex(int traceIdIndex) {
+        this.traceIdIndex = traceIdIndex;
+    }
+
     @Override
     public String toString() {
-        return "RpcEntity{" +
+        return "RpcClientEntity{" +
                 "name='" + name + '\'' +
                 ", isSyn=" + isSyn +
                 ", host='" + host + '\'' +
                 ", port=" + port +
                 ", rpcClz='" + rpcClz + '\'' +
+                ", traceIdIndex=" + traceIdIndex +
                 '}';
     }
 }

@@ -21,9 +21,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 /**
- * ${DESCRIPTION}
- * https://www.cnblogs.com/clonen/p/6735011.html
- *
+ * 参考了 https://www.cnblogs.com/clonen/p/6735011.html
  * @author fangzhipeng
  * create 2018-05-21
  **/
@@ -74,6 +72,7 @@ public class RequstInvocationHandler implements InvocationHandler {
                 Object object = interceptor.invokeSync( connectionEntity.getChannelFuture(), request );
                 if (object instanceof NettyRpcResponse) {
                     NettyRpcResponse response = (NettyRpcResponse) object;
+
                     return response.getResult();
                 }
             } else {
@@ -146,6 +145,9 @@ public class RequstInvocationHandler implements InvocationHandler {
         request.setMethod( method.getName() );
         request.setParamTypes( method.getParameterTypes() );
         request.setParams( args );
+        if (request.getParams().length > entity.getTraceIdIndex()) {
+            request.setTraceId( request.getParams()[0].toString() );
+        }
         return request;
     }
 

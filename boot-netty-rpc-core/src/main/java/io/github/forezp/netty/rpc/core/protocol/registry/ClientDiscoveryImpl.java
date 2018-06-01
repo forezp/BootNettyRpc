@@ -38,6 +38,9 @@ public class ClientDiscoveryImpl extends AbstractClientDiscovery {
     public void init() {
         refresh();
         scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+        //刚启动每10s查询一次，之后每30s查询一次。
+        scheduledExecutorService.schedule( new DiscoveryClientTask(), 10, TimeUnit.SECONDS );
+        scheduledExecutorService.schedule( new DiscoveryClientTask(), 20, TimeUnit.SECONDS );
         scheduledExecutorService.scheduleAtFixedRate( new DiscoveryClientTask(), 30,
                 Integer.parseInt( nettyRpcProperties.getCommonProperties().getNettyClientRenewInterval() ), TimeUnit.SECONDS );
 
@@ -69,27 +72,27 @@ public class ClientDiscoveryImpl extends AbstractClientDiscovery {
     }
 
 
-    public List<NettyClient> convertNettyClients(List<ServiceInstance> serviceInstances) {
+    private List<NettyClient> convertNettyClients(List<ServiceInstance> serviceInstances) {
         if (CollectionUtils.isEmpty( serviceInstances )) {
             return null;
         }
         List<NettyClient> nettyClients = new CopyOnWriteArrayList<>();
         for (ServiceInstance serviceInstance : serviceInstances) {
             NettyClient nettyClient = new NettyClient();
-            Map<String, String> metaData = serviceInstance.getMetadata();
-            String host = metaData.get( NettyRpcConstants.NETTY_SERVER_HOST );
+            Map<String, String> metadata = serviceInstance.getMetadata();
+            String host = metadata.get( NettyRpcConstants.NETTY_SERVER_HOST );
             if (StringUtils.isEmpty( host )) {
                 host = serviceInstance.getHost();
             }
             nettyClient.setHost( host );
 
-            String name = metaData.get( NettyRpcConstants.NETTY_SERVER_NAME );
+            String name = metadata.get( NettyRpcConstants.NETTY_SERVER_NAME );
             if (StringUtils.isEmpty( name )) {
                 name = serviceInstance.getServiceId();
             }
             nettyClient.setName( name );
 
-            String port = metaData.get( NettyRpcConstants.NETTY_SERVER_PORT );
+            String port = metadata.get( NettyRpcConstants.NETTY_SERVER_PORT );
             if (StringUtils.isEmpty( port )) {
                 throw new CommonException( "netty server " + name + " 's port connot be null" );
             }

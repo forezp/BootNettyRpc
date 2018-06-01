@@ -17,6 +17,9 @@ public class RequestHandler extends AbstractRequestHandler {
 
     @Override
     public void handle(NettyRpcRequest request, NettyRpcResponse response) {
+        if (request.isHeatBeat()) {
+            return;
+        }
         beforeHandle( response );
         Object serviceBean = getInvokeBean( request );
         if (serviceBean == null) {
@@ -38,7 +41,7 @@ public class RequestHandler extends AbstractRequestHandler {
         }
         //TODO monitor
         response.setMessageId( request.getMessageId() );
-        response.setInterfaceClz( request.getInterfaceClass() );
+        response.setInterfaceClass( request.getInterfaceClass() );
         response.setSyn( request.isSyn() );
         response.setStartTime( request.getStartTime() );
         response.setResult( result );

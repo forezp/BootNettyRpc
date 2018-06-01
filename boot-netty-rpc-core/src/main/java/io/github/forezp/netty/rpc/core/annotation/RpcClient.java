@@ -48,5 +48,13 @@ public @interface RpcClient {
      */
     int port() default -1;
 
+    /**
+     * traceId的在方法参数中的位置，默认为0，只能一个类全局配置，不支持单个方法配置。
+     * traceId 用于分布式链路追踪，需要直接手动传入，如果没有这个需求可不做任何配置即可
+     *
+     * @return
+     */
+    int traceIdIndex() default 0;
+
 
 }

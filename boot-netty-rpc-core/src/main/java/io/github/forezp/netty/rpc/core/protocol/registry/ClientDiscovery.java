@@ -10,6 +10,7 @@ import java.util.Map;
  * create 2018-05-31
  **/
 public interface ClientDiscovery {
+
     Map<String, List<NettyClient>> getNettyClietMap();
 
     void refresh();

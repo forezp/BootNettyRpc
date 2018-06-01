@@ -1,4 +1,4 @@
-package io.github.forezp.netty.rpc.core.protocol.serializer;
+package io.github.forezp.netty.rpc.core.protocol.server;
 
 import io.github.forezp.netty.rpc.core.common.entity.AppEntity;
 

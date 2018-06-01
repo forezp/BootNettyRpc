@@ -9,9 +9,12 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.ReferenceCountUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.net.SocketAddress;
 import java.util.concurrent.Callable;
+
 /**
- *
  * @author fangzhipeng
  * create 2018-05-21
  **/
@@ -47,9 +50,23 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<NettyRpcRequ
 
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx,
+    public void exceptionCaught(ChannelHandlerContext context,
                                 Throwable cause) {
+
+        if (cause instanceof IOException) {
+            LOG.warn( "Channel is closed, remote address={}...", getRemoteAddress( context ) );
+        }
+
+        //TODO 发监控消息
         cause.printStackTrace();
-        ctx.close();
+
+    }
+
+    public SocketAddress getLocalAddress(ChannelHandlerContext context) {
+        return context.channel().localAddress();
+    }
+
+    public SocketAddress getRemoteAddress(ChannelHandlerContext context) {
+        return context.channel().remoteAddress();
     }
 }

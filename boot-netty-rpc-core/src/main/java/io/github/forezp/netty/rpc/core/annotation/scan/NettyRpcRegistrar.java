@@ -162,6 +162,7 @@ public class NettyRpcRegistrar implements ImportBeanDefinitionRegistrar, Resourc
         definition.addPropertyValue( "host", attributes.get( "host" ) );
         definition.addPropertyValue( "port", attributes.get( "port" ) );
         definition.addPropertyValue( "rpcClz", attributes.get( "rpcClz" ) );
+        definition.addPropertyValue( "traceIdIndex", attributes.get( "traceIdIndex" ) );
         definition.setAutowireMode( AbstractBeanDefinition.AUTOWIRE_BY_NAME );
         String alias = className;
         AbstractBeanDefinition beanDefinition = definition.getBeanDefinition();
