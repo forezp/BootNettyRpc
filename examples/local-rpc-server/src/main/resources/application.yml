@@ -1,0 +1,9 @@
+server:
+  port: 7001
+
+netty.server.name: server
+netty.server.port: 6001
+
+spring:
+  application:
+    name: server

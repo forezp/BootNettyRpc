@@ -1,0 +1,10 @@
+server.port: 7002
+
+netty:
+  clients:
+    - name: server
+      host: localhost
+      port: 6001
+    - name: server
+      host: localhost
+      port: 6001

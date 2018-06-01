@@ -19,6 +19,8 @@
         <module>example-rpc-lib</module>
         <module>example-rpc-server</module>
         <module>example-rpc-client</module>
+        <module>local-rpc-lient</module>
+        <module>local-rpc-server</module>
     </modules>
 
 
