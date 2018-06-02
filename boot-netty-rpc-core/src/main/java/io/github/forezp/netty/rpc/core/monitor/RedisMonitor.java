@@ -3,8 +3,6 @@ package io.github.forezp.netty.rpc.core.monitor;
 import io.github.forezp.netty.rpc.core.common.thread.ThreadPoolFactory;
 import io.github.forezp.netty.rpc.core.config.CommonProperties;
 import io.github.forezp.netty.rpc.core.protocol.serializer.SerializerExecutor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
@@ -46,6 +44,7 @@ public class RedisMonitor extends AbstractMonitor {
         switch (timeTpye) {
             case "second":
                 return TimeUnit.SECONDS;
+
             case "munite":
                 return TimeUnit.MINUTES;
 
@@ -54,6 +53,7 @@ public class RedisMonitor extends AbstractMonitor {
 
             case "day":
                 return TimeUnit.DAYS;
+
             default:
                 return TimeUnit.HOURS;
 
