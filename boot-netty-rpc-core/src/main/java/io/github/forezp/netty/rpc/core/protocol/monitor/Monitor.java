@@ -12,5 +12,5 @@ public interface Monitor {
 
     MonitorMessage create(NettyRpcMessage message);
 
-    void execute(MonitorMessage entity);
+    void execute(MonitorMessage message);
 }

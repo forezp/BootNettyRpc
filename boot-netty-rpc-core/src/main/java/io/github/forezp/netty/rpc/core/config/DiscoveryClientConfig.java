@@ -23,7 +23,7 @@ public class DiscoveryClientConfig {
 
     @Configuration
     @ConditionalOnBean(DiscoveryClient.class)
-    protected static class DiscoveryGrpcClientAutoConfiguration {
+    protected static class DiscoveryClientAutoConfiguration {
 
         @Autowired
         ExcutorContainer excutorContainer;

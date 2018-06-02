@@ -4,7 +4,7 @@ package io.github.forezp.netty.rpc.core.common.constant;
  * ${DESCRIPTION}
  *
  * @author fangzhipeng
- * create 2018-05-25
+ *         create 2018-05-25
  **/
 public class ConfigConstants {
 
@@ -44,5 +44,10 @@ public class ConfigConstants {
 
     public static final String NETTY_CLIENT_RENEW_INTERVAL = "netty.client.renew.interval";
     public static final String NETTY_CLIENT_RENEW_INTERVAL_DEFAULT = "30";//second
+
+    public static final String MONITOR_TYPE = "monitor.type";
+    public static final String MONITOR_TYPE_HTTP = "http";
+    public static final String MONITOR_HTTP_URL = "monitor.url";
+    public static final String MONITOR_TYPE_REDIS = "redis";
 
 }

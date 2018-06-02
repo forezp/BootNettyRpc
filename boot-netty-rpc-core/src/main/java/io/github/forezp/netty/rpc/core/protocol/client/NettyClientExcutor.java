@@ -39,7 +39,7 @@ public class NettyClientExcutor extends AbstractClientExcutor {
         connect(appEntity, barrier);
         // 主线程等待连接成功后，第一个await执行，唤醒当前连接线程和主线程
         // 两倍于Netty的连接超时事件，这么做防止服务端Netty连接还不完成，客户端就开始调用服务
-        barrier.await(2000 * 2, TimeUnit.MILLISECONDS);
+        barrier.await(10000 * 2, TimeUnit.MILLISECONDS);
     }
 
 

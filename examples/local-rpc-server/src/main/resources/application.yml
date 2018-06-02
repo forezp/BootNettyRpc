@@ -7,3 +7,22 @@ netty.server.port: 6001
 spring:
   application:
     name: server
+
+
+  redis:
+    host: localhost
+    port: 6379
+#    password: ee
+    database: 1
+    pool:
+      max-active: 8
+      max-wait: -1
+      max-idle: 500
+      min-idle: 0
+    timeout: 0
+
+#monitor:
+#  type: http
+#  url: http://localhost:7002/postmsg
+monitor:
+  type: redis

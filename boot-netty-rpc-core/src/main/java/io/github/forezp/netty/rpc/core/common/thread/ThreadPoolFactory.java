@@ -34,6 +34,28 @@ public class ThreadPoolFactory {
                 commonProperties.getServerPoolRejectType() );
     }
 
+
+    public static ThreadPoolExecutor createThreadPoolDefaultExecutor() {
+        return createThreadPoolExecutor(CommonProperties.CPUS * 1,
+                CommonProperties.CPUS * 2,
+                15 * 60 * 1000,
+                false);
+    }
+
+
+    public static ThreadPoolExecutor createThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, boolean allowCoreThreadTimeOut) {
+
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(corePoolSize,
+                maximumPoolSize,
+                keepAliveTime,
+                TimeUnit.MILLISECONDS,
+                new LinkedBlockingQueue<>( 1024 ) ,
+                new BlockingPolicyWithReport());
+        threadPoolExecutor.allowCoreThreadTimeOut(allowCoreThreadTimeOut);
+
+        return threadPoolExecutor;
+    }
+
     public static ThreadPoolExecutor createClientPoolExecutor(String interfaceName) {
 
         return createThreadPoolExecutor( clientThreadPoolMap, interfaceName, commonProperties.getClientPoolCoreSize()
@@ -49,8 +71,8 @@ public class ThreadPoolFactory {
         if (executorMap.get( interfaceName ) != null) {
             return executorMap.get( interfaceName );
         } else {
-            ThreadPoolExecutor newThreadPool = new ThreadPoolExecutor( commonProperties.CPUS * coreSize
-                    , commonProperties.CPUS * maxSize, keepAliveTime, TimeUnit.MILLISECONDS
+            ThreadPoolExecutor newThreadPool = new ThreadPoolExecutor( CommonProperties.CPUS * coreSize
+                    , CommonProperties.CPUS * maxSize, keepAliveTime, TimeUnit.MILLISECONDS
                     , createQuene( queneType, queueSize ), createThreadFactory( interfaceName )
                     , createRejectedExecutionHandler( rejectType ) );
             if (newThreadPool != null) {

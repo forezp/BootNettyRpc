@@ -2,5 +2,6 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 io.github.forezp.netty.rpc.core.config.NettyRpcConfig,\
 io.github.forezp.netty.rpc.core.config.DiscoveryClientConfig,\
-io.github.forezp.netty.rpc.core.config.NettyMeteEurekaConfig
+io.github.forezp.netty.rpc.core.config.NettyMeteEurekaConfig,\
+io.github.forezp.netty.rpc.core.config.MonitorConfig
 

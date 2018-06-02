@@ -29,6 +29,8 @@ public class CommonProperties {
 
     private String nettyClientRenewInterval;
 
+    private String monitorUrl;
+
     public static final int CPUS = Math.max( 2, Runtime.getRuntime().availableProcessors() );
 
 
@@ -150,5 +152,13 @@ public class CommonProperties {
 
     public void setNettyClientRenewInterval(String nettyClientRenewInterval) {
         this.nettyClientRenewInterval = nettyClientRenewInterval;
+    }
+
+    public String getMonitorUrl() {
+        return monitorUrl;
+    }
+
+    public void setMonitorUrl(String monitorUrl) {
+        this.monitorUrl = monitorUrl;
     }
 }

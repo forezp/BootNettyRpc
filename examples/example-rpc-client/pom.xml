@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.forezp</groupId>
+    <groupId>io.github.forezp</groupId>
     <artifactId>example-rpc-client</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.3</version>
     <packaging>jar</packaging>
 
     <name>example-rpc-client</name>
@@ -22,7 +22,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring-cloud.version>Dalston.RELEASE</spring-cloud.version>
-        <netty.rpc.core>1.0.2</netty.rpc.core>
+        <netty.rpc.core>1.0.3</netty.rpc.core>
 
     </properties>
     <dependencies>
@@ -43,9 +43,16 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.forezp</groupId>
+            <groupId>io.github.forezp</groupId>
             <artifactId>example-rpc-lib</artifactId>
-            <version>1.0.2</version>
+            <version>1.0.3</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.github.forezp</groupId>
+                    <artifactId>boot-netty-rpc-core</artifactId>
+                </exclusion>
+            </exclusions>
+
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>

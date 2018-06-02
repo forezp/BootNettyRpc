@@ -2,6 +2,7 @@ package io.github.forezp.netty.rpc.core.common.container;
 
 import io.github.forezp.netty.rpc.core.protocol.client.ResponseHandler;
 import io.github.forezp.netty.rpc.core.protocol.loadbalancer.LoadBalanceExcutor;
+import io.github.forezp.netty.rpc.core.protocol.monitor.Monitor;
 import io.github.forezp.netty.rpc.core.protocol.server.RequestHandler;
 import io.github.forezp.netty.rpc.core.protocol.client.IClientExcutor;
 import io.github.forezp.netty.rpc.core.protocol.client.RequestInterceptor;
@@ -27,6 +28,8 @@ public class ExcutorContainer {
     private LoadBalanceExcutor loadBalanceExcutor;
 
     private ClientDiscovery clientDiscovery;
+
+    private Monitor monitor;
 
     public IClientExcutor getClientExcutor() {
         return clientExcutor;
@@ -82,5 +85,13 @@ public class ExcutorContainer {
 
     public void setClientDiscovery(ClientDiscovery clientDiscovery) {
         this.clientDiscovery = clientDiscovery;
+    }
+
+    public Monitor getMonitor() {
+        return monitor;
+    }
+
+    public void setMonitor(Monitor monitor) {
+        this.monitor = monitor;
     }
 }
