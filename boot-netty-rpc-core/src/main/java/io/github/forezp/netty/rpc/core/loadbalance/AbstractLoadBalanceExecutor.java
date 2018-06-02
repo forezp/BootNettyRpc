@@ -1,4 +1,4 @@
-package io.github.forezp.netty.rpc.core.protocol.loadbalancer;
+package io.github.forezp.netty.rpc.core.loadbalance;
 
 import io.github.forezp.netty.rpc.core.common.delegate.NettyRpcDelegateImpl;
 import io.github.forezp.netty.rpc.core.common.entity.NettyClient;

@@ -1,4 +1,4 @@
-package io.github.forezp.netty.rpc.core.protocol.monitor;
+package io.github.forezp.netty.rpc.core.monitor;
 
 import io.github.forezp.netty.rpc.core.common.delegate.NettyRpcDelegateImpl;
 import io.github.forezp.netty.rpc.core.common.entity.NettyRpcMessage;

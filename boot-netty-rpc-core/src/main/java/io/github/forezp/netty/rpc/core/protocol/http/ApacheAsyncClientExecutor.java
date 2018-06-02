@@ -12,6 +12,7 @@ import org.apache.http.nio.reactor.ConnectingIOReactor;
 import org.apache.http.nio.reactor.IOReactorException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.Callable;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.Executors;
@@ -26,6 +27,7 @@ public class ApacheAsyncClientExecutor {
     private CloseableHttpAsyncClient httpAsyncClient;
 
     public void initialize(final NettyRpcProperties properties) throws Exception {
+        final CommonProperties cp = properties.getCommonProperties();
         final CyclicBarrier barrier = new CyclicBarrier(2);
         Executors.newCachedThreadPool().submit(new Callable<Object>() {
             @Override
@@ -33,21 +35,20 @@ public class ApacheAsyncClientExecutor {
                 try {
 
 
-
                     IOReactorConfig ioReactorConfig = IOReactorConfig.custom()
-                            .setIoThreadCount(CommonProperties.CPUS*2)
-                            .setConnectTimeout(5000)
-                            .setSoTimeout(5000)
-                            .setSndBufSize(64 * 1024)
-                            .setRcvBufSize(64 * 1024)
-                            .setBacklogSize(128)
+                            .setIoThreadCount(CommonProperties.CPUS * 2)
+                            .setConnectTimeout(Integer.parseInt(cp.getHttpConnectTimeout()))
+                            .setSoTimeout(Integer.parseInt(cp.getHttpSocketTimeout()))
+                            .setSndBufSize(Integer.parseInt(cp.getHttpSendBufSize()))
+                            .setRcvBufSize(Integer.parseInt(cp.getHttpRcvBufSize()))
+                            .setBacklogSize(Integer.parseInt(cp.getHttpBackLogSize()))
                             .setTcpNoDelay(true)
                             .setSoReuseAddress(true)
                             .setSoKeepAlive(true)
                             .build();
                     ConnectingIOReactor ioReactor = new DefaultConnectingIOReactor(ioReactorConfig);
                     PoolingNHttpClientConnectionManager httpManager = new PoolingNHttpClientConnectionManager(ioReactor);
-                    httpManager.setMaxTotal(32);
+                    httpManager.setMaxTotal(Integer.parseInt(cp.getHttpMaxTotal()));
 
                     httpAsyncClient = HttpAsyncClients.custom().setConnectionManager(httpManager).build();
                     httpAsyncClient.start();

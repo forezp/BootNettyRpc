@@ -5,9 +5,9 @@ import io.github.forezp.netty.rpc.core.annotation.condition.NettyServerCondition
 import io.github.forezp.netty.rpc.core.common.constant.ConfigConstants;
 import io.github.forezp.netty.rpc.core.common.enums.LoadBalancerType;
 import io.github.forezp.netty.rpc.core.protocol.client.ResponseHandler;
-import io.github.forezp.netty.rpc.core.protocol.loadbalancer.LoadBalanceExcutor;
-import io.github.forezp.netty.rpc.core.protocol.loadbalancer.RandomLoadBalanceExecutor;
-import io.github.forezp.netty.rpc.core.protocol.loadbalancer.RoundRobinLoadBalaceExecutor;
+import io.github.forezp.netty.rpc.core.loadbalance.LoadBalanceExcutor;
+import io.github.forezp.netty.rpc.core.loadbalance.RandomLoadBalanceExecutor;
+import io.github.forezp.netty.rpc.core.loadbalance.RoundRobinLoadBalaceExecutor;
 import io.github.forezp.netty.rpc.core.protocol.server.RequestHandler;
 import io.github.forezp.netty.rpc.core.protocol.client.RequestInterceptor;
 import io.github.forezp.netty.rpc.core.common.container.CacheContainer;
@@ -79,6 +79,27 @@ public class NettyRpcConfig {
         properties.setNettyClientRenewInterval(nettyClientRenewInterval);
         properties.setMonitorUrl(monitorUrl);
 
+        String httpConnectTimeout = env.getProperty(HTTPCLIENT_CONNCT_TIMEOUT, HTTPCLIENT_CONNCT_TIMEOUT_DEFAULT);
+        String httpConnectRequestTimeout = env.getProperty(HTTPCLIENT_CONNCT_REQUEST_TIMEOUT, HTTPCLIENT_CONNCT_REQUEST_TIMEOUT_DEFAULT);
+        String httpSocketTimeout = env.getProperty(HTTPCLIENT_SOCKET_TIMEOUT, HTTPCLIENT_SOCKET_TIMEOUT_DEFAULT);
+        String httpSendBufSize = env.getProperty(HTTPCLIENT_SEDBUFSIZE, HTTPCLIENT_SEDBUFSIZE_DEFAULT);
+        String httpRcvBufSize = env.getProperty(HTTPCLIENT_RCV_BUFSIZE, HTTPCLIENT_RCV_BUFSIZE_DEFAULT);
+        String httpBackLogSize = env.getProperty(HTTPCLIENT_BACK_LOG_SIZE, HTTPCLIENT_BACK_LOG_SIZE_DEFAULT);
+        String httpMaxTotal = env.getProperty(HTTPCLIENT_MAX_TOTAL, HTTPCLIENT_MAX_TOTAL_DEFAULT);
+
+        properties.setHttpConnectTimeout(httpConnectTimeout);
+        properties.setHttpConnectRequestTimeout(httpConnectRequestTimeout);
+        properties.setHttpSocketTimeout(httpSocketTimeout);
+        properties.setHttpRcvBufSize(httpRcvBufSize);
+        properties.setHttpSendBufSize(httpSendBufSize);
+        properties.setHttpBackLogSize(httpBackLogSize);
+        properties.setHttpMaxTotal(httpMaxTotal);
+
+        String monitorRedisExpire = env.getProperty(MONITOR_REDIS_EXPIRE, MONITOR_REDIS_EXPIRE_DEFAULT);
+        String monitorRedisExpireTimeUnit = env.getProperty(MONITOR_REDIS_EXPIRE_TIMEUNIT, MONITOR_REDIS_EXPIRE_TIMEUNIT_DEFAULT);
+
+        properties.setMonitorRedisExpire(monitorRedisExpire);
+        properties.setMonitorRedisExpireTimeUnit(monitorRedisExpireTimeUnit);
         return properties;
 
     }

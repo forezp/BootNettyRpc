@@ -4,7 +4,7 @@ package io.github.forezp.netty.rpc.core.config;
  * ${DESCRIPTION}
  *
  * @author fangzhipeng
- * create 2018-05-28
+ *         create 2018-05-28
  **/
 public class CommonProperties {
 
@@ -30,8 +30,18 @@ public class CommonProperties {
     private String nettyClientRenewInterval;
 
     private String monitorUrl;
+    private String httpConnectTimeout;
+    private String httpConnectRequestTimeout;
+    private String httpSocketTimeout;
+    private String httpSendBufSize;
+    private String httpRcvBufSize;
+    private String httpBackLogSize;
+    private String httpMaxTotal;
 
-    public static final int CPUS = Math.max( 2, Runtime.getRuntime().availableProcessors() );
+    private String monitorRedisExpire;
+    private String monitorRedisExpireTimeUnit;
+
+    public static final int CPUS = Math.max(2, Runtime.getRuntime().availableProcessors());
 
 
     public String getEurekaEnable() {
@@ -160,5 +170,77 @@ public class CommonProperties {
 
     public void setMonitorUrl(String monitorUrl) {
         this.monitorUrl = monitorUrl;
+    }
+
+    public String getHttpConnectTimeout() {
+        return httpConnectTimeout;
+    }
+
+    public void setHttpConnectTimeout(String httpConnectTimeout) {
+        this.httpConnectTimeout = httpConnectTimeout;
+    }
+
+    public String getHttpConnectRequestTimeout() {
+        return httpConnectRequestTimeout;
+    }
+
+    public void setHttpConnectRequestTimeout(String httpConnectRequestTimeout) {
+        this.httpConnectRequestTimeout = httpConnectRequestTimeout;
+    }
+
+    public String getHttpSocketTimeout() {
+        return httpSocketTimeout;
+    }
+
+    public void setHttpSocketTimeout(String httpSocketTimeout) {
+        this.httpSocketTimeout = httpSocketTimeout;
+    }
+
+    public String getHttpSendBufSize() {
+        return httpSendBufSize;
+    }
+
+    public void setHttpSendBufSize(String httpSendBufSize) {
+        this.httpSendBufSize = httpSendBufSize;
+    }
+
+    public String getHttpRcvBufSize() {
+        return httpRcvBufSize;
+    }
+
+    public void setHttpRcvBufSize(String httpRcvBufSize) {
+        this.httpRcvBufSize = httpRcvBufSize;
+    }
+
+    public String getHttpBackLogSize() {
+        return httpBackLogSize;
+    }
+
+    public void setHttpBackLogSize(String httpBackLogSize) {
+        this.httpBackLogSize = httpBackLogSize;
+    }
+
+    public String getHttpMaxTotal() {
+        return httpMaxTotal;
+    }
+
+    public void setHttpMaxTotal(String httpMaxTotal) {
+        this.httpMaxTotal = httpMaxTotal;
+    }
+
+    public String getMonitorRedisExpire() {
+        return monitorRedisExpire;
+    }
+
+    public void setMonitorRedisExpire(String monitorRedisExpire) {
+        this.monitorRedisExpire = monitorRedisExpire;
+    }
+
+    public String getMonitorRedisExpireTimeUnit() {
+        return monitorRedisExpireTimeUnit;
+    }
+
+    public void setMonitorRedisExpireTimeUnit(String monitorRedisExpireTimeUnit) {
+        this.monitorRedisExpireTimeUnit = monitorRedisExpireTimeUnit;
     }
 }

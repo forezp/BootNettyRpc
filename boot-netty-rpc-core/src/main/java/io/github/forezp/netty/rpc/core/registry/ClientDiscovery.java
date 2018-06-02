@@ -1,4 +1,4 @@
-package io.github.forezp.netty.rpc.core.protocol.registry;
+package io.github.forezp.netty.rpc.core.registry;
 
 import io.github.forezp.netty.rpc.core.common.entity.NettyClient;
 

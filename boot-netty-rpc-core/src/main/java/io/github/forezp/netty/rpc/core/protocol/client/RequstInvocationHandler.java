@@ -9,7 +9,7 @@ import io.github.forezp.netty.rpc.core.common.entity.AppEntity;
 import io.github.forezp.netty.rpc.core.common.entity.ConnectionEntity;
 import io.github.forezp.netty.rpc.core.common.entity.RpcClientEntity;
 import io.github.forezp.netty.rpc.core.common.exception.CommonException;
-import io.github.forezp.netty.rpc.core.protocol.loadbalancer.LoadBalanceExcutor;
+import io.github.forezp.netty.rpc.core.loadbalance.LoadBalanceExcutor;
 import io.github.forezp.netty.rpc.core.util.NettyRpcApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

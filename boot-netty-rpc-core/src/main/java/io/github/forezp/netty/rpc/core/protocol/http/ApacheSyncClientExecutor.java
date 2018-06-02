@@ -1,6 +1,7 @@
 package io.github.forezp.netty.rpc.core.protocol.http;
 
 
+import io.github.forezp.netty.rpc.core.config.CommonProperties;
 import io.github.forezp.netty.rpc.core.config.NettyRpcProperties;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
@@ -33,10 +34,11 @@ public class ApacheSyncClientExecutor {
     }
 
     public void initialize(NettyRpcProperties properties, boolean https) throws Exception {
+        CommonProperties cp = properties.getCommonProperties();
         RequestConfig requestConfig = RequestConfig.custom()
-                .setConnectTimeout(5000)
-                .setConnectionRequestTimeout(5000)
-                .setSocketTimeout(5000)
+                .setConnectTimeout(Integer.parseInt(cp.getHttpConnectTimeout()))
+                .setConnectionRequestTimeout(Integer.parseInt(cp.getHttpConnectRequestTimeout()))
+                .setSocketTimeout(Integer.parseInt(cp.getHttpSocketTimeout()))
                 .build();
 
         HttpClientBuilder clientBuilder = HttpClients.custom();

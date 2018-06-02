@@ -5,7 +5,7 @@ import com.forezp.examplerpclib.lib.IGreeting;
 import io.github.forezp.netty.rpc.core.annotation.EnableNettyRpc;
 import io.github.forezp.netty.rpc.core.common.dto.RespDTO;
 import io.github.forezp.netty.rpc.core.protocol.client.Invoker;
-import io.github.forezp.netty.rpc.core.protocol.monitor.MonitorMessage;
+import io.github.forezp.netty.rpc.core.monitor.MonitorMessage;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;

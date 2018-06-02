@@ -21,8 +21,8 @@ spring:
       min-idle: 0
     timeout: 0
 
-#monitor:
-#  type: http
-#  url: http://localhost:7002/postmsg
 monitor:
-  type: redis
+  type: http
+  url: http://localhost:7002/postmsg
+#monitor:
+#  type: redis

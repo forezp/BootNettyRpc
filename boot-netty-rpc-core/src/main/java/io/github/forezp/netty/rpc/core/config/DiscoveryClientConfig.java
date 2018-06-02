@@ -2,7 +2,7 @@ package io.github.forezp.netty.rpc.core.config;
 
 
 import io.github.forezp.netty.rpc.core.common.container.ExcutorContainer;
-import io.github.forezp.netty.rpc.core.protocol.registry.ClientDiscoveryImpl;
+import io.github.forezp.netty.rpc.core.registry.ClientDiscoveryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

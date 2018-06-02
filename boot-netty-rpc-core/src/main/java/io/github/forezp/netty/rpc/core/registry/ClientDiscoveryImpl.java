@@ -1,4 +1,4 @@
-package io.github.forezp.netty.rpc.core.protocol.registry;
+package io.github.forezp.netty.rpc.core.registry;
 
 import com.google.common.collect.Maps;
 import io.github.forezp.netty.rpc.core.common.constant.NettyRpcConstants;
@@ -141,6 +141,7 @@ public class ClientDiscoveryImpl extends AbstractClientDiscovery {
         }
     }
 
+    @Override
     public Map<String, List<NettyClient>> getNettyClietMap() {
         return nettyClietMap;
     }
