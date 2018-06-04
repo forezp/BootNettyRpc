@@ -25,17 +25,19 @@ public class RedisMonitor extends AbstractMonitor {
     @Override
     public void execute(final MonitorMessage message) {
 
-        ThreadPoolFactory.createThreadPoolDefaultExecutor().execute(new Runnable() {
+        ThreadPoolFactory.createThreadPoolDefaultExecutor().execute( new Runnable() {
             @Override
             public void run() {
 
                 CommonProperties cp = nettyRpcProperties.getCommonProperties();
                 ListOperations<String, String> ops = stringRedisTemplate.opsForList();
-                ops.leftPush(message.getTraceId(), SerializerExecutor.toJson(message));
-                stringRedisTemplate.expire(message.getTraceId(), Long.parseLong(cp.getMonitorRedisExpire()),
-                        getTimeUnit(cp.getMonitorRedisExpireTimeUnit()));
+                ops.leftPush( message.getTraceId(), SerializerExecutor.toJson( message ) );
+                if (!cp.getMonitorRedisExpire().equals( "-1" )) {
+                    stringRedisTemplate.expire( message.getTraceId(), Long.parseLong( cp.getMonitorRedisExpire() ),
+                            getTimeUnit( cp.getMonitorRedisExpireTimeUnit() ) );
+                }
             }
-        });
+        } );
 
 
     }
