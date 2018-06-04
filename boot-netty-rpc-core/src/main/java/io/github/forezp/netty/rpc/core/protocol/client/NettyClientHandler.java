@@ -1,6 +1,6 @@
 package io.github.forezp.netty.rpc.core.protocol.client;
 
-import io.github.forezp.netty.rpc.core.common.entity.HeaaBeat;
+import io.github.forezp.netty.rpc.core.common.entity.HeartBeat;
 import io.github.forezp.netty.rpc.core.common.entity.NettyRpcRequest;
 import io.github.forezp.netty.rpc.core.common.entity.NettyRpcResponse;
 import io.github.forezp.netty.rpc.core.common.container.ExcutorContainer;
@@ -16,8 +16,6 @@ import org.slf4j.LoggerFactory;
 
 import java.net.SocketAddress;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * ${DESCRIPTION}
@@ -73,7 +71,7 @@ public class NettyClientHandler extends SimpleChannelInboundHandler<NettyRpcResp
             if (state == IdleState.WRITER_IDLE) {*/
             NettyRpcRequest request = new NettyRpcRequest();
             request.setHeatBeat( true );
-            request.setInterfaceClass( HeaaBeat.class );
+            request.setInterfaceClass( HeartBeat.class );
             request.setMethod( "beat" );
             request.setSyn( false );
 

@@ -39,7 +39,6 @@ public class NettyRpcConfig {
     @Bean
     CommonProperties commonProperties() {
         CommonProperties properties = new CommonProperties();
-//        PropertyResolver resolver = new RelaxedPropertyResolver( env );
 
         String eurekaEnable = env.getProperty(NETTY_EUREKA_ENABLE, NETTY_EUREKA_ENABLE_DEFAULT);
         String loadBalanceType = env.getProperty(ConfigConstants.NETTY_LOADBALANCE_TYPE, "");

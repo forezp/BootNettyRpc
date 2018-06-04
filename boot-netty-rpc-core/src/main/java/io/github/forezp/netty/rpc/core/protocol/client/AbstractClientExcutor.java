@@ -22,7 +22,6 @@ public abstract class AbstractClientExcutor extends NettyRpcDelegateImpl impleme
 
     @Override
     public ChannelFuture online(AppEntity appEntity, ChannelFuture channelFuture) throws Exception {
-        // TCP调用是多个Interface共享一个通道，注册Interface后，如果对应的通道已经开启，不需要重复开启了
         ConnectionEntity connectionEntity = new ConnectionEntity();
         connectionEntity.setAppEntity( appEntity );
         connectionEntity.setChannelFuture( channelFuture );
