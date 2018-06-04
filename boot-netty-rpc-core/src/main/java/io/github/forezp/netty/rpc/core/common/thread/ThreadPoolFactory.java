@@ -43,13 +43,13 @@ public class ThreadPoolFactory {
     }
 
 
-    public static ThreadPoolExecutor createThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, boolean allowCoreThreadTimeOut) {
+    public static ThreadPoolExecutor createThreadPoolExecutor( int corePoolSize,  int maximumPoolSize, long keepAliveTime, boolean allowCoreThreadTimeOut) {
 
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(corePoolSize,
                 maximumPoolSize,
                 keepAliveTime,
                 TimeUnit.MILLISECONDS,
-                new LinkedBlockingQueue<>( 1024 ) ,
+                new LinkedBlockingQueue(  ) ,
                 new BlockingPolicyWithReport());
         threadPoolExecutor.allowCoreThreadTimeOut(allowCoreThreadTimeOut);
 

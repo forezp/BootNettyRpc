@@ -23,7 +23,7 @@ public class RedisMonitor extends AbstractMonitor {
     }
 
     @Override
-    public void execute(MonitorMessage message) {
+    public void execute(final MonitorMessage message) {
 
         ThreadPoolFactory.createThreadPoolDefaultExecutor().execute(new Runnable() {
             @Override

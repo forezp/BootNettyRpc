@@ -26,7 +26,7 @@ BootNettyRpc 包括Server端和Client端。
  <dependency>
        <groupId>io.github.forezp</groupId>
         <artifactId>boot-netty-rpc-core</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.3</version>
  </dependency>
  
 ```
@@ -76,7 +76,7 @@ public interface IGreeting {
  <dependency>
        <groupId>io.github.forezp</groupId>
         <artifactId>boot-netty-rpc-core</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.3</version>
 </dependency>
 
 ```
@@ -131,10 +131,11 @@ netty:
 - 负载均衡
 - 接口线程池隔离
 - 接入Eureka
+- 接入链路追踪
+- 接入监控
 
 ## 未来计划
 
 - 优化rpc性能
 - 接入consule
-- 接入链路追踪
-- 接入监控
+- 接入报警邮箱
