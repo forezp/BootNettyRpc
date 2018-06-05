@@ -37,7 +37,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<NettyRpcRequ
             @Override
             public Object call() throws Exception {
 
-                LOG.info( "Server received: " + request.toString() );
+               // LOG.info( "Server received: " + request.toString() );
                 NettyRpcResponse response = new NettyRpcResponse( 1, "sucess", null );
                 excutorContainer.getServerRequestHandler().handle( request, response );
                 ctx.writeAndFlush( response );

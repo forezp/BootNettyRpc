@@ -22,6 +22,7 @@ import java.util.List;
 
 /**
  * 参考了 https://www.cnblogs.com/clonen/p/6735011.html
+ *
  * @author fangzhipeng
  * create 2018-05-21
  **/
@@ -66,7 +67,7 @@ public class RequstInvocationHandler implements InvocationHandler {
         NettyRpcRequest request = buildRequest( entity, method, args );
         ConnectionEntity connectionEntity = findCandidateConnection( entity );
         if (connectionEntity != null) {
-            LOG.info( "run connectionEntity:" + connectionEntity.toString() );
+            //  LOG.info( "run connectionEntity:" + connectionEntity.toString() );
             RequestInterceptor interceptor = (RequestInterceptor) NettyRpcApplication.getBean( "requestInterceptor" );
             if (request.isSyn()) {
                 Object object = interceptor.invokeSync( connectionEntity.getChannelFuture(), request );
@@ -84,14 +85,19 @@ public class RequstInvocationHandler implements InvocationHandler {
             BeanUtils.copyProperties( entity, appEntity );
             ExcutorContainer excutorContainer = (ExcutorContainer) NettyRpcApplication.getBean( "excutorContainer" );
             NettyClientExcutor excutor = (NettyClientExcutor) excutorContainer.getClientExcutor();
-            try {
-                excutor.start( appEntity );
-                while (!excutor.started( appEntity )) {
+            synchronized (RequstInvocationHandler.class) {
+                try {
+                    if (excutor.started( appEntity )) {
+                        return run( method, args );
+                    }
+                    excutor.start( appEntity );
+                    while (!excutor.started( appEntity )) {
+                    }
+                    return run( method, args );
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return null;
                 }
-                return run( method, args );
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
             }
         }
     }

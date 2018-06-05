@@ -27,7 +27,7 @@ public class ConfigConstants {
     public static final String SERVER_POOL_KEEPALIVE_TIME = "netty.server.pool.keepalive.time";
     public static final String SERVER_POOL_KEEPALIVE_TIME_DEFAULT = "1800000";
     public static final String SERVER_POOL_REJECT_TYPE = "netty.server.pool.reject.type";
-    public static final String SERVER_POOL_REJECT_TYPE_DEFAULT = "DiscardedPolicyWithReport";
+    public static final String SERVER_POOL_REJECT_TYPE_DEFAULT = "BlockingPolicyWithReport";
 
     public static final String CLIENT_POOL_CORE_SIZE = "netty.client.pool.coresize";
     public static final String CLIENT_POOL_CORE_SIZE_DEFAULT = "4";
@@ -40,7 +40,7 @@ public class ConfigConstants {
     public static final String CLIENT_POOL_KEEPALIVE_TIME = "netty.client.pool.keepalive.time";
     public static final String CLIENT_POOL_KEEPALIVE_TIME_DEFAULT = "1800000";
     public static final String CLIENT_POOL_REJECT_TYPE = "netty.client.pool.reject.type";
-    public static final String CLIENT_POOL_REJECT_TYPE_DEFAULT = "DiscardedPolicyWithReport";
+    public static final String CLIENT_POOL_REJECT_TYPE_DEFAULT = "BlockingPolicyWithReport";
 
     public static final String NETTY_CLIENT_RENEW_INTERVAL = "netty.client.renew.interval";
     public static final String NETTY_CLIENT_RENEW_INTERVAL_DEFAULT = "30";//second

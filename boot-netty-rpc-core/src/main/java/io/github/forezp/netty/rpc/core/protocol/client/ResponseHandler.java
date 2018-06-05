@@ -17,7 +17,7 @@ public class ResponseHandler extends AbstractResponseHandler {
     @Override
     public void handle(NettyRpcResponse response) {
         response.setEndTime(System.currentTimeMillis());
-        LOG.info("Client received: " + response.toString());
+      //  LOG.info("Client received: " + response.toString());
         LOG.info("耗时: " + (response.getEndTime() - response.getStartTime()) + "ms");
         //处理response
         if (response.isSyn()) {

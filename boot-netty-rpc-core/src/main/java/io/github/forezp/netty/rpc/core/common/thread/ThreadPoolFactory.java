@@ -36,22 +36,22 @@ public class ThreadPoolFactory {
 
 
     public static ThreadPoolExecutor createThreadPoolDefaultExecutor() {
-        return createThreadPoolExecutor(CommonProperties.CPUS * 1,
+        return createThreadPoolExecutor( CommonProperties.CPUS * 1,
                 CommonProperties.CPUS * 2,
                 15 * 60 * 1000,
-                false);
+                false );
     }
 
 
-    public static ThreadPoolExecutor createThreadPoolExecutor( int corePoolSize,  int maximumPoolSize, long keepAliveTime, boolean allowCoreThreadTimeOut) {
+    public static ThreadPoolExecutor createThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, boolean allowCoreThreadTimeOut) {
 
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(corePoolSize,
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor( corePoolSize,
                 maximumPoolSize,
                 keepAliveTime,
                 TimeUnit.MILLISECONDS,
-                new LinkedBlockingQueue(  ) ,
-                new BlockingPolicyWithReport());
-        threadPoolExecutor.allowCoreThreadTimeOut(allowCoreThreadTimeOut);
+                new LinkedBlockingQueue(),
+                new BlockingPolicyWithReport() );
+        threadPoolExecutor.allowCoreThreadTimeOut( allowCoreThreadTimeOut );
 
         return threadPoolExecutor;
     }
@@ -68,18 +68,18 @@ public class ThreadPoolFactory {
                                                               int coreSize, int maxSize, Long keepAliveTime, String queneType,
                                                               int queueSize, String rejectType) {
 
-        if (executorMap.get( interfaceName ) != null) {
-            return executorMap.get( interfaceName );
-        } else {
+        ThreadPoolExecutor threadPoolExecutor = executorMap.get( interfaceName );
+        if (threadPoolExecutor == null) {
             ThreadPoolExecutor newThreadPool = new ThreadPoolExecutor( CommonProperties.CPUS * coreSize
                     , CommonProperties.CPUS * maxSize, keepAliveTime, TimeUnit.MILLISECONDS
                     , createQuene( queneType, queueSize ), createThreadFactory( interfaceName )
                     , createRejectedExecutionHandler( rejectType ) );
-            if (newThreadPool != null) {
-                executorMap.putIfAbsent( interfaceName, newThreadPool );
+            threadPoolExecutor = executorMap.putIfAbsent( interfaceName, newThreadPool );
+            if (threadPoolExecutor == null) {
+                threadPoolExecutor = newThreadPool;
             }
-            return newThreadPool;
         }
+        return threadPoolExecutor;
     }
 
     private static RejectedExecutionHandler createRejectedExecutionHandler(String rejectedPolicy) {

@@ -6,6 +6,7 @@ import io.github.forezp.netty.rpc.core.common.entity.ResponseSyncEntity;
 import io.netty.channel.ChannelFuture;
 
 import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.TimeUnit;
 
 /**
  * ${DESCRIPTION}
@@ -30,7 +31,7 @@ public class RequestInterceptor extends NettyRpcDelegateImpl implements IRequset
         cacheContainer.getSyncEntityMap().put( messageId, responseSyncEntity );
         try {
             invokeAsync( channelFuture, request );
-            barrier.await();//TODO 超时没有处理
+            barrier.await( 5000, TimeUnit.MILLISECONDS );//TODO 5s 超时没有处理
             return responseSyncEntity.getResult();
         } catch (Exception e) {
             e.printStackTrace();

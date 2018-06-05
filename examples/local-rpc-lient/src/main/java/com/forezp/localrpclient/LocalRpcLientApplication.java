@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.forezp.examplerpclib.lib.IGreeting;
 import io.github.forezp.netty.rpc.core.annotation.EnableNettyRpc;
 import io.github.forezp.netty.rpc.core.common.dto.RespDTO;
+import io.github.forezp.netty.rpc.core.common.thread.ThreadPoolFactory;
 import io.github.forezp.netty.rpc.core.protocol.client.Invoker;
 import io.github.forezp.netty.rpc.core.monitor.MonitorMessage;
 import org.springframework.boot.SpringApplication;
@@ -13,26 +14,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Random;
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.ThreadFactory;
+
 @SpringBootApplication
 @RestController
 @EnableNettyRpc(basePackages = "com.forezp")
 public class LocalRpcLientApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(LocalRpcLientApplication.class, args);
+        SpringApplication.run( LocalRpcLientApplication.class, args );
     }
 
     @GetMapping("/test")
     public RespDTO test() throws Exception {
 
-        IGreeting invoker = (IGreeting) Invoker.invoke(IGreeting.class);
-        Object result = invoker.sayHello("sww");
-        return RespDTO.success(result);
+        IGreeting invoker = (IGreeting) Invoker.invoke( IGreeting.class );
+        Object result = invoker.sayHello( "sww" );
+
+
+        return RespDTO.success( result );
     }
 
     @PostMapping("/postmsg")
     public void post(@RequestBody MonitorMessage message) {
-        System.out.println(JSON.toJSONString(message));
+        //System.out.println(JSON.toJSONString(message));
     }
 
 }
