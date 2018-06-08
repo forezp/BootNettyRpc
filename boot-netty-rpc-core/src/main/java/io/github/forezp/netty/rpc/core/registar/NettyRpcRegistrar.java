@@ -1,10 +1,11 @@
-package io.github.forezp.netty.rpc.core.annotation.scan;
+package io.github.forezp.netty.rpc.core.registar;
 
 import io.github.forezp.netty.rpc.core.annotation.EnableNettyRpc;
 import io.github.forezp.netty.rpc.core.annotation.RpcClient;
-import io.github.forezp.netty.rpc.core.common.entity.RpcClientEntity;
+import org.aopalliance.intercept.MethodInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.factory.BeanClassLoaderAware;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -164,13 +165,23 @@ public class NettyRpcRegistrar implements ImportBeanDefinitionRegistrar, Resourc
         definition.addPropertyValue( "rpcClz", attributes.get( "rpcClz" ) );
         definition.addPropertyValue( "traceIdIndex", attributes.get( "traceIdIndex" ) );
         definition.setAutowireMode( AbstractBeanDefinition.AUTOWIRE_BY_NAME );
+
+        try {
+            definition.addPropertyValue( "interfaze", Class.forName( className ) );
+        } catch (ClassNotFoundException e) {
+            LOG.error( "Get interface for name error", e );
+        }
+        // definition.setAutowireMode( AbstractBeanDefinition.AUTOWIRE_BY_TYPE );
         String alias = className;
         AbstractBeanDefinition beanDefinition = definition.getBeanDefinition();
+        beanDefinition.setPrimary( false );
+        definition.addPropertyValue( "interceptor", getInterceptor( beanDefinition.getPropertyValues() ) );
 
         BeanDefinitionHolder holder = new BeanDefinitionHolder( beanDefinition, className,
                 new String[]{alias} );
         LOG.info( "registerRpcClient:" + className );
         BeanDefinitionReaderUtils.registerBeanDefinition( holder, registry );
+
     }
 
     protected ClassPathScanningCandidateComponentProvider getScanner() {
@@ -242,5 +253,9 @@ public class NettyRpcRegistrar implements ImportBeanDefinitionRegistrar, Resourc
             }
             return true;
         }
+    }
+
+    protected MethodInterceptor getInterceptor(MutablePropertyValues annotationValues) {
+        return new NettyRpcInterceptor( annotationValues );
     }
 }

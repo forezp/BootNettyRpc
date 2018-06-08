@@ -16,7 +16,7 @@ netty:
 netty.server.pool.keepalive.time: 15000000
 netty.server.pool.coresize: 45
 netty.eureka.enable: true
-
+netty.server.pool.maxsize: 90
 eureka:
   client:
     serviceUrl:

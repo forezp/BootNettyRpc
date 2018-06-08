@@ -3,6 +3,8 @@ server:
 
 netty.server.name: server
 netty.server.port: 6001
+netty.server.pool.coresize: 50
+netty.server.pool.maxsize: 100
 
 netty:
   clients:

@@ -83,13 +83,8 @@ public class NettyRpcRequest extends NettyRpcMessage implements Serializable {
     }
 
 
-    public Class getInterfaceClass() {
-        return interfaceClass;
-    }
 
-    public void setInterfaceClass(Class interfaceClass) {
-        this.interfaceClass = interfaceClass;
-    }
+
 
     @Override
     public String toString() {
@@ -101,7 +96,7 @@ public class NettyRpcRequest extends NettyRpcMessage implements Serializable {
                 ", method='" + method + '\'' +
                 ", paramTypes=" + Arrays.toString(paramTypes) +
                 ", params=" + Arrays.toString(params) +
-                ", interfaceClass=" + interfaceClass +
+                ", interfaceClass=" + interfaze +
                 ", fromUrl='" + fromUrl + '\'' +
                 '}';
     }

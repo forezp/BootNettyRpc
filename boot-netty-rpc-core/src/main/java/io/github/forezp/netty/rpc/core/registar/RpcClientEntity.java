@@ -1,4 +1,6 @@
-package io.github.forezp.netty.rpc.core.common.entity;
+package io.github.forezp.netty.rpc.core.registar;
+
+import io.github.forezp.netty.rpc.core.registar.RegistrarFactoryBean;
 
 import java.io.Serializable;
 
@@ -8,17 +10,16 @@ import java.io.Serializable;
  * @author fangzhipeng
  * create 2018-05-23
  **/
-public class RpcClientEntity implements Serializable {
+public class RpcClientEntity extends RegistrarFactoryBean implements Serializable {
 
     private static final long serialVersionUID = 5149083798031489971L;
-
-
     private String name;
     private boolean isSyn;
     private String host;
     private int port;
     private String rpcClz;
     private int traceIdIndex;
+
 
 
     public String getName() {

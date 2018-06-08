@@ -20,7 +20,7 @@ public abstract class AbstractMonitor extends NettyRpcDelegateImpl implements Mo
         }
         MonitorMessage monitorMessage = new MonitorMessage();
         BeanUtils.copyProperties( message, monitorMessage );
-        monitorMessage.setInterfaceClassName( message.getInterfaceClass().getName() );
+        monitorMessage.setInterfaceClassName( message.getInterfaze() );
         return monitorMessage;
     }
 

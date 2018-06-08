@@ -1,9 +1,8 @@
 package io.github.forezp.netty.rpc.core.config;
 
 import com.netflix.appinfo.EurekaInstanceConfig;
-import io.github.forezp.netty.rpc.core.annotation.condition.NettyServerCondition;
+import io.github.forezp.netty.rpc.core.config.condition.NettyServerCondition;
 import io.github.forezp.netty.rpc.core.common.constant.NettyRpcConstants;
-import io.github.forezp.netty.rpc.core.common.container.ExcutorContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.forezp</groupId>
+    <groupId>io.github.forezp.lib</groupId>
     <artifactId>example-rpc-lib</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <packaging>jar</packaging>
 
     <name>example-rpc-lib</name>
@@ -22,15 +22,13 @@
     </properties>
 
 
-
     <dependencies>
         <dependency>
             <groupId>io.github.forezp</groupId>
             <artifactId>boot-netty-rpc-core</artifactId>
-            <version>1.0.3</version>
+            <version>1.0.4</version>
         </dependency>
     </dependencies>
-
 
 
 </project>

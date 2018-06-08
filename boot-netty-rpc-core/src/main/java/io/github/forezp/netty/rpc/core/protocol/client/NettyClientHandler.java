@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import java.net.SocketAddress;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * ${DESCRIPTION}
@@ -36,16 +37,29 @@ public class NettyClientHandler extends SimpleChannelInboundHandler<NettyRpcResp
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, final NettyRpcResponse response) throws Exception {
 
+        ThreadPoolExecutor executor = ThreadPoolFactory.createClientPoolExecutor( response.getInterfaze() );
 
-        ThreadPoolFactory.createClientPoolExecutor( response.getInterfaceClass().getName() ).submit( new Callable<NettyRpcResponse>() {
+        int coreSize = executor.getCorePoolSize();
+        int activeCount = executor.getActiveCount();
+        int queueSize = executor.getQueue().size();
+        System.out.println( "executor" + executor.toString() + "  coreSize:" + coreSize + " activeCount:" + activeCount + " queueSize :" + queueSize );
+
+        ThreadPoolFactory.createClientPoolExecutor( response.getInterfaze() ).submit( new Callable<NettyRpcResponse>() {
 
             @Override
             public NettyRpcResponse call() throws Exception {
 
-                ResponseHandler responseHandler = excutorContainer.getResponseHandler();
-                responseHandler.handle( response );
-                ReferenceCountUtil.release( response );
+
+                try {
+                    ResponseHandler responseHandler = excutorContainer.getResponseHandler();
+                    responseHandler.handle( response );
+                } catch (Exception e) {
+                    LOG.error( "Client handle failed", e );
+                } finally {
+                    ReferenceCountUtil.release( response );
+                }
                 return null;
+
             }
         } );
 
@@ -71,7 +85,7 @@ public class NettyClientHandler extends SimpleChannelInboundHandler<NettyRpcResp
             if (state == IdleState.WRITER_IDLE) {*/
             NettyRpcRequest request = new NettyRpcRequest();
             request.setHeatBeat( true );
-            request.setInterfaceClass( HeartBeat.class );
+            request.setInterfaze( HeartBeat.class.getName() );
             request.setMethod( "beat" );
             request.setSyn( false );
 

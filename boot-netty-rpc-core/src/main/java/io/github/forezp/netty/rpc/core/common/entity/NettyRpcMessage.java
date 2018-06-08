@@ -24,7 +24,7 @@ public class NettyRpcMessage implements Serializable {
     protected String method;
 
 
-    protected Class interfaceClass;
+    protected String interfaze;
 
     public String getMessageId() {
         return messageId;
@@ -90,11 +90,11 @@ public class NettyRpcMessage implements Serializable {
         this.method = method;
     }
 
-    public Class getInterfaceClass() {
-        return interfaceClass;
+    public String getInterfaze() {
+        return interfaze;
     }
 
-    public void setInterfaceClass(Class interfaceClass) {
-        this.interfaceClass = interfaceClass;
+    public void setInterfaze(String interfaze) {
+        this.interfaze = interfaze;
     }
 }

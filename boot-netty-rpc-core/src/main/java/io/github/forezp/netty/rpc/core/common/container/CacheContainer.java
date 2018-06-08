@@ -3,7 +3,7 @@ package io.github.forezp.netty.rpc.core.common.container;
 import io.github.forezp.netty.rpc.core.common.entity.AppEntity;
 import io.github.forezp.netty.rpc.core.common.entity.ConnectionEntity;
 import io.github.forezp.netty.rpc.core.common.entity.ResponseSyncEntity;
-import io.github.forezp.netty.rpc.core.common.entity.RpcClientEntity;
+import io.github.forezp.netty.rpc.core.registar.RpcClientEntity;
 
 import com.google.common.collect.Maps;
 

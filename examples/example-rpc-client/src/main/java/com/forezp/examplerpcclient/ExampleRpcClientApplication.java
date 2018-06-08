@@ -5,7 +5,7 @@ import io.github.forezp.netty.rpc.core.annotation.EnableNettyRpc;
 
 import io.github.forezp.netty.rpc.core.common.dto.RespDTO;
 import io.github.forezp.netty.rpc.core.config.NettyRpcProperties;
-import io.github.forezp.netty.rpc.core.protocol.client.Invoker;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,13 +28,15 @@ public class ExampleRpcClientApplication {
     @Autowired
     NettyRpcProperties properties;
 
+    @Autowired
+    IGreeting greeting;
+
     @GetMapping("/test")
     public RespDTO test() throws Exception {
-
-//        RpcEntity entity = CacheUtils.getRpcEntityMap().get( IGreeting.class.getName());
-        IGreeting invoker = (IGreeting) Invoker.invoke( IGreeting.class );
-        Object result = invoker.sayHello( "sww" );
-        return RespDTO.success( result );
+        // IGreeting invoker = (IGreeting) Invoker.invoke( IGreeting.class );
+        //   Object result = invoker.sayHello( "sww" );
+        String resuult = greeting.sayHello( "miya" );
+        return RespDTO.success( resuult );
     }
 
 

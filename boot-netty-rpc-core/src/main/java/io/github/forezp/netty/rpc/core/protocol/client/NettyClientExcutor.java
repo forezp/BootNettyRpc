@@ -69,7 +69,7 @@ public class NettyClientExcutor extends AbstractClientExcutor {
                                                     90000,
                                                     60000,
                                                    45000, TimeUnit.MILLISECONDS))
-                                            .addLast(new NettyObjectDecoder(1024))
+                                            .addLast(new NettyObjectDecoder(10240))
                                             .addLast(new NettyObjectEncoder())
                                             .addLast(new JdkZlibDecoder())
                                             .addLast(new JdkZlibEncoder())

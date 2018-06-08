@@ -23,7 +23,7 @@ public class ConfigConstants {
     public static final String SERVER_POOL_QUEUE_TYPE = "netty.server.pool.queue.type";
     public static final String SERVER_POOL_QUEUE_TYPE_DEFAULT = "LinkedBlockingQueue";
     public static final String SERVER_POOL_QUEUE_SIZE = "netty.server.pool.queue.size";
-    public static final String SERVER_POOL_QUEUE_SIZE_DEFAULT = "1024";
+    public static final String SERVER_POOL_QUEUE_SIZE_DEFAULT = "10240";
     public static final String SERVER_POOL_KEEPALIVE_TIME = "netty.server.pool.keepalive.time";
     public static final String SERVER_POOL_KEEPALIVE_TIME_DEFAULT = "1800000";
     public static final String SERVER_POOL_REJECT_TYPE = "netty.server.pool.reject.type";
@@ -36,7 +36,7 @@ public class ConfigConstants {
     public static final String CLIENT_POOL_QUEUE_TYPE = "netty.client.pool.queue.type";
     public static final String CLIENT_POOL_QUEUE_TYPE_DEFAULT = "LinkedBlockingQueue";
     public static final String CLIENT_POOL_QUEUE_SIZE = "netty.client.pool.queue.size";
-    public static final String CLIENT_POOL_QUEUE_SIZE_DEFAULT = "1024";
+    public static final String CLIENT_POOL_QUEUE_SIZE_DEFAULT = "10240";
     public static final String CLIENT_POOL_KEEPALIVE_TIME = "netty.client.pool.keepalive.time";
     public static final String CLIENT_POOL_KEEPALIVE_TIME_DEFAULT = "1800000";
     public static final String CLIENT_POOL_REJECT_TYPE = "netty.client.pool.reject.type";

@@ -33,13 +33,14 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<NettyRpcRequ
     @Override
     public void channelRead0(final ChannelHandlerContext ctx, final NettyRpcRequest request) {
 
-        ThreadPoolFactory.createServerPoolExecutor( request.getInterfaceClass().getName() ).submit( new Callable<Object>() {
+        ThreadPoolFactory.createServerPoolExecutor( request.getInterfaze() ).submit( new Callable<Object>() {
             @Override
             public Object call() throws Exception {
 
-               // LOG.info( "Server received: " + request.toString() );
+                LOG.info( "Server received: " + request.toString() );
                 NettyRpcResponse response = new NettyRpcResponse( 1, "sucess", null );
                 excutorContainer.getServerRequestHandler().handle( request, response );
+                LOG.info( "response:" + request.toString() );
                 ctx.writeAndFlush( response );
                 ReferenceCountUtil.release( request );
                 return null;

@@ -1,7 +1,7 @@
 package io.github.forezp.netty.rpc.core.loadbalance;
 
 import io.github.forezp.netty.rpc.core.common.entity.NettyClient;
-import io.github.forezp.netty.rpc.core.common.entity.RpcClientEntity;
+import io.github.forezp.netty.rpc.core.registar.RpcClientEntity;
 import com.google.common.collect.Maps;
 import org.springframework.beans.BeanUtils;
 

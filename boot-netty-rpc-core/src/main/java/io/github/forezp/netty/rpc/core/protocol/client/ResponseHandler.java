@@ -17,23 +17,24 @@ public class ResponseHandler extends AbstractResponseHandler {
     @Override
     public void handle(NettyRpcResponse response) {
         response.setEndTime(System.currentTimeMillis());
-      //  LOG.info("Client received: " + response.toString());
+        LOG.info("Client received: " + response.toString());
         LOG.info("耗时: " + (response.getEndTime() - response.getStartTime()) + "ms");
         //处理response
         if (response.isSyn()) {
             String messageId = response.getMessageId();
             ResponseSyncEntity entity = cacheContainer.getSyncEntityMap().get(messageId);
-            if (entity == null) {
-                //设置异常
+            if (entity != null) {
+                try {
+                    entity.setResult(response);
+                    entity.getBarrier().await();
+                }catch (Exception e){
+                    e.printStackTrace();
+                    //TODO 异常
+                }finally {
+                    cacheContainer.getSyncEntityMap().remove( messageId );
+                }
             }
-            entity.setResult(response);
-            try {
-                entity.getBarrier().await();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (BrokenBarrierException e) {
-                e.printStackTrace();
-            }
+
         }
 
     }

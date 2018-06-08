@@ -1,7 +1,5 @@
 package com.forezp.localrpcserver.api;
 
-
-import com.forezp.examplerpclib.lib.IGreeting;
 import org.springframework.stereotype.Service;
 
 /**

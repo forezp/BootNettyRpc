@@ -1,4 +1,4 @@
-package io.github.forezp.netty.rpc.core.annotation.condition;
+package io.github.forezp.netty.rpc.core.config.condition;
 
 import io.github.forezp.netty.rpc.core.common.constant.ConfigConstants;
 

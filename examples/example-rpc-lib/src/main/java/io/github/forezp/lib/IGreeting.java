@@ -8,7 +8,7 @@ import io.github.forezp.netty.rpc.core.annotation.RpcClient;
  * @author fangzhipeng
  * @create 2018-05-18
  **/
-@RpcClient(name = "server", rpcClz = "com.forezp.examplerpcserver.api.Greeting", isSyn = false)
+@RpcClient(name = "server")
 public interface IGreeting {
 
     String sayHello(String name);

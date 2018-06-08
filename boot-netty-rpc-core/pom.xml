@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.forezp</groupId>
     <artifactId>boot-netty-rpc-core</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <packaging>jar</packaging>
 
     <name>boot-netty-rpc-core</name>
@@ -33,7 +33,7 @@
         <spring-cloud.version>Dalston.RELEASE</spring-cloud.version>
         <httpclient.version>4.5.2</httpclient.version>
         <httpasyncclient.version>4.1.1</httpasyncclient.version>
-        <netty.rpc.core>1.0.3</netty.rpc.core>
+        <netty.rpc.core>1.0.4</netty.rpc.core>
 
 
     </properties>

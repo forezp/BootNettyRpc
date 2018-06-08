@@ -2,7 +2,7 @@ package io.github.forezp.netty.rpc.core.loadbalance;
 
 import io.github.forezp.netty.rpc.core.common.delegate.NettyRpcDelegateImpl;
 import io.github.forezp.netty.rpc.core.common.entity.NettyClient;
-import io.github.forezp.netty.rpc.core.common.entity.RpcClientEntity;
+import io.github.forezp.netty.rpc.core.registar.RpcClientEntity;
 import io.github.forezp.netty.rpc.core.common.exception.CommonException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

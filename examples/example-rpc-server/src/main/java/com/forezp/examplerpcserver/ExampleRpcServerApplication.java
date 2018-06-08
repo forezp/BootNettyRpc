@@ -1,10 +1,8 @@
 package com.forezp.examplerpcserver;
 
 import io.github.forezp.netty.rpc.core.annotation.EnableNettyRpc;
-import io.github.forezp.netty.rpc.core.common.entity.RpcClientEntity;
 import io.github.forezp.netty.rpc.core.config.NettyRpcProperties;
 
-import io.github.forezp.netty.rpc.core.util.NettyRpcApplication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -35,11 +33,6 @@ public class ExampleRpcServerApplication {
     @GetMapping("/test")
     public void test() {
 
-        boolean clientDiscoveryFactory = NettyRpcApplication.containsBean( "clientDiscoveryFactory" );
-        RpcClientEntity rpcEntity = (RpcClientEntity) NettyRpcApplication.getBean( "com.forezp.atlasrpcframework.api.IGreeting" );
-        if (rpcEntity != null) {
-
-        }
 
     }
 }

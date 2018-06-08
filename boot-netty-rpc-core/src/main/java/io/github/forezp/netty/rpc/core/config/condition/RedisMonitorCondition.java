@@ -1,4 +1,6 @@
-package io.github.forezp.netty.rpc.core.annotation.condition;
+package io.github.forezp.netty.rpc.core.config.condition;
+
+import io.github.forezp.netty.rpc.core.config.condition.PropertyEqualsCondition;
 
 import static io.github.forezp.netty.rpc.core.common.constant.ConfigConstants.MONITOR_TYPE;
 import static io.github.forezp.netty.rpc.core.common.constant.ConfigConstants.MONITOR_TYPE_REDIS;
