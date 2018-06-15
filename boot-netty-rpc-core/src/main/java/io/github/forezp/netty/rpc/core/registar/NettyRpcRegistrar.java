@@ -51,7 +51,7 @@ public class NettyRpcRegistrar implements ImportBeanDefinitionRegistrar, Resourc
         System.out.println( "║║║║║║╔╗║║║║╔╬╬╬╬╝" );
         System.out.println( "║║║║║║╔╗║║╚╣║║╠╬╬╗" );
         System.out.println( "╚╝╚╝╚╩╝╚╝╚═╩╝╚╩╝╚╝" );
-        System.out.println( "Boot Netty Rpc v1.0.0  .... " );
+        System.out.println( "Boot Netty Rpc .... " );
         System.out.println( "Author: Forezp. Email: miles02@163.com   " );
         System.out.println( "  " );
     }

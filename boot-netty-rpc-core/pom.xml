@@ -8,9 +8,8 @@
     <packaging>jar</packaging>
 
     <name>boot-netty-rpc-core</name>
-    <description>A Framework of Rpc with Netty  for Spring Boot</description>
+    <description>A Framework of Rpc with Netty for Spring Boot</description>
     <url>https://github.com/forezp</url>
-
 
 
     <properties>
@@ -34,6 +33,7 @@
         <httpclient.version>4.5.2</httpclient.version>
         <httpasyncclient.version>4.1.1</httpasyncclient.version>
         <netty.rpc.core>1.0.4</netty.rpc.core>
+        <mail.version>1.5.5</mail.version>
 
 
     </properties>
@@ -100,10 +100,26 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.vip.vjtools</groupId>
+            <artifactId>vjkit</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>com.sun.mail</groupId>
+                <artifactId>javax.mail</artifactId>
+                <version>${mail.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-eureka</artifactId>
@@ -189,7 +205,6 @@
                 <scope>provided</scope>
             </dependency>
         </dependencies>
-
 
 
     </dependencyManagement>
@@ -285,7 +300,6 @@
             <organization>za</organization>
         </developer>
     </developers>
-
 
 
 </project>

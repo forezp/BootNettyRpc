@@ -1,7 +1,5 @@
 package io.github.forezp.netty.rpc.core.registar;
 
-import io.github.forezp.netty.rpc.core.registar.RegistrarFactoryBean;
-
 import java.io.Serializable;
 
 /**
