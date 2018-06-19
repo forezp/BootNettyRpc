@@ -1,4 +1,4 @@
-package io.github.forezp.netty.rpc.core.monitor;
+package io.github.forezp.netty.rpc.core.monitor.trace;
 
 import io.github.forezp.netty.rpc.core.common.thread.ThreadPoolFactory;
 import io.github.forezp.netty.rpc.core.config.CommonProperties;

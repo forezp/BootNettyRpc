@@ -1,4 +1,4 @@
-package io.github.forezp.netty.rpc.core.monitor;
+package io.github.forezp.netty.rpc.core.monitor.trace;
 
 import java.io.Serializable;
 

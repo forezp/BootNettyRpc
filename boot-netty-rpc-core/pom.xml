@@ -24,6 +24,7 @@
         <netty.version>4.1.12.Final</netty.version>
         <fastjson.version>1.2.47</fastjson.version>
         <guava.version>20.0</guava.version>
+        <commons-lang3.version>3.7</commons-lang3.version>
         <lombok.version>1.16.18</lombok.version>
         <log4j.version>2.9.1</log4j.version>
         <spring.version>4.2.7.RELEASE</spring.version>
@@ -43,6 +44,11 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
         </dependency>
 
         <dependency>
@@ -105,11 +111,7 @@
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.vip.vjtools</groupId>
-            <artifactId>vjkit</artifactId>
-            <version>1.0.0</version>
-        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
@@ -174,6 +176,12 @@
             </dependency>
 
             <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>io.netty</groupId>
                 <artifactId>netty-all</artifactId>
                 <version>${netty.version}</version>
@@ -204,7 +212,11 @@
                 <version>${spring-boot.version}</version>
                 <scope>provided</scope>
             </dependency>
+
+
         </dependencies>
+
+
 
 
     </dependencyManagement>
