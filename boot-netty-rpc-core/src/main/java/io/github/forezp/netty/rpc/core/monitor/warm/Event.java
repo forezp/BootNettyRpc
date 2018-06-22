@@ -6,11 +6,16 @@ package io.github.forezp.netty.rpc.core.monitor.warm;
  * @author fangzhipeng
  * create 2018-06-19
  **/
-public class Event<T> {
+public class Event {
 
-    private T msg;
+    private String  msg;
 
-    public Event(T msg) {
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
         this.msg = msg;
     }
+
 }

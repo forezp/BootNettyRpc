@@ -4,7 +4,7 @@ package io.github.forezp.netty.rpc.core.common.constant;
  * ${DESCRIPTION}
  *
  * @author fangzhipeng
- *         create 2018-05-25
+ * create 2018-05-25
  **/
 public class ConfigConstants {
 
@@ -65,12 +65,27 @@ public class ConfigConstants {
     public static final String HTTPCLIENT_MAX_TOTAL = "httpclient.max.total";
     public static final String HTTPCLIENT_MAX_TOTAL_DEFAULT = "64";
 
-    public static final String MONITOR_REDIS_EXPIRE="monotor.redis.expire";
+    public static final String MONITOR_REDIS_EXPIRE = "monotor.redis.expire";
     //-1永久
-    public static final String MONITOR_REDIS_EXPIRE_DEFAULT="24";
-    public static final String MONITOR_REDIS_EXPIRE_TIMEUNIT="monotor.redis.expire.timeunit";
+    public static final String MONITOR_REDIS_EXPIRE_DEFAULT = "24";
+    public static final String MONITOR_REDIS_EXPIRE_TIMEUNIT = "monotor.redis.expire.timeunit";
     //hour second minute day
-    public static final String MONITOR_REDIS_EXPIRE_TIMEUNIT_DEFAULT="hour";
+    public static final String MONITOR_REDIS_EXPIRE_TIMEUNIT_DEFAULT = "hour";
+
+    /**
+     * 报警邮箱的相关配置
+     * to cc bcc 可配置多个，用";"隔开
+     */
+    public static final String MONITOR_MAIL_ENABLE = "monitor.mail.enable";
+    public static final String MONITOR_MAIL_ENABLE_TRUE = "true";
+    public static final String MAIL_HOST = "monitor.mail.host";
+    public static final String MAIL_USER_NAME = "monitor.mail.username";
+    public static final String MAIL_USER_PASSWORD = "monitor.mail.password";
+    public static final String MAIL_IS_ENABLE_SSL = "monitor.mail.enable.ssl";
+    public static final String MAIL_FROM = "monitor.mail.from";
+    public static final String MAIL_TO = "monitor.mail.to";
+    public static final String MAIL_CC = "monitor.mail.cc";
+    public static final String MAIL_BCC = "monitor.mail.bcc";
 
 
 }

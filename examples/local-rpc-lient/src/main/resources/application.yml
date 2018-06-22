@@ -8,3 +8,14 @@ netty:
     - name: server
       host: localhost
       port: 6001
+
+
+monitor.mail.enable: false
+monitor.mail.host: smtp.163.com
+monitor.mail.username: miles02
+monitor.mail.password: yourpassword
+monitor.mail.enable.ssl:
+monitor.mail.from: miles02@163.com
+monitor.mail.to: 124746406@qq.com
+monitor.mail.cc: 88943553@qq.com
+monitor.mail.bcc: 88943553@qq.com

@@ -1,11 +1,13 @@
 package io.github.forezp.netty.rpc.core.config;
 
 import io.github.forezp.netty.rpc.core.config.condition.HttpMonitorConditon;
+import io.github.forezp.netty.rpc.core.config.condition.MailMonitorCondition;
 import io.github.forezp.netty.rpc.core.config.condition.RedisMonitorCondition;
 import io.github.forezp.netty.rpc.core.common.container.ExcutorContainer;
 import io.github.forezp.netty.rpc.core.common.exception.CommonException;
 import io.github.forezp.netty.rpc.core.monitor.trace.HttpMonitor;
 import io.github.forezp.netty.rpc.core.monitor.trace.RedisMonitor;
+import io.github.forezp.netty.rpc.core.monitor.warm.SmtpEventHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -36,11 +38,11 @@ public class MonitorConfig {
         @Bean
         public HttpMonitor monitor() {
             HttpMonitor monitor = new HttpMonitor();
-            if (StringUtils.isEmpty(nettyRpcProperties.commonProperties.getMonitorUrl())) {
-                throw new CommonException("monitor.url connot be null");
+            if (StringUtils.isEmpty( nettyRpcProperties.commonProperties.getMonitorUrl() )) {
+                throw new CommonException( "monitor.url connot be null" );
             }
-            monitor.setNettyRpcProperties(nettyRpcProperties);
-            excutorContainer.setMonitor(monitor);
+            monitor.setNettyRpcProperties( nettyRpcProperties );
+            excutorContainer.setMonitor( monitor );
             return monitor;
 
         }
@@ -63,10 +65,26 @@ public class MonitorConfig {
         @Bean
         public RedisMonitor redisMonitor(StringRedisTemplate stringRedisTemplate) {
 
-            RedisMonitor redisMonitor = new RedisMonitor(stringRedisTemplate);
-            redisMonitor.setNettyRpcProperties(nettyRpcProperties);
-            excutorContainer.setMonitor(redisMonitor);
+            RedisMonitor redisMonitor = new RedisMonitor( stringRedisTemplate );
+            redisMonitor.setNettyRpcProperties( nettyRpcProperties );
+            excutorContainer.setMonitor( redisMonitor );
             return redisMonitor;
+        }
+    }
+
+    @Configuration
+    @Conditional(MailMonitorCondition.class)
+    protected static class MailMonitorConfig {
+
+        @Autowired
+        NettyRpcProperties nettyRpcProperties;
+
+        @Bean
+        public SmtpEventHandler smtpEventHandler() {
+
+            SmtpEventHandler smtpEventHandler = new SmtpEventHandler( nettyRpcProperties );
+
+            return smtpEventHandler;
         }
     }
 

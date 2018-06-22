@@ -1,8 +1,10 @@
 package io.github.forezp.netty.rpc.core.monitor.warm;
 
+import io.github.forezp.netty.rpc.core.config.CommonProperties;
 import io.github.forezp.netty.rpc.core.config.NettyRpcProperties;
 import io.github.forezp.netty.rpc.core.protocol.mail.SmtpExecutor;
 import io.github.forezp.netty.rpc.core.protocol.mail.SmtpSslExecutor;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Email miles02@163.com
@@ -16,12 +18,16 @@ public class SmtpEventHandler extends AbstractEventHandler {
     private NettyRpcProperties properties;
 
     public SmtpEventHandler(NettyRpcProperties properties) {
-        //TODO  从properties读取配置信息
-        String host = null;
-        String user = null;
-        String password = null;
-
+        this.properties = properties;
+        CommonProperties cp = properties.getCommonProperties();
+        String host = cp.getMailHost();
+        String user = cp.getMailUserName();
+        String password = cp.getMailUserPassword();
+        String enableSsl = cp.getIsMailEnableSsl();
         boolean ssl = false;
+        if (!StringUtils.isEmpty( enableSsl )) {
+            ssl = Boolean.valueOf( enableSsl );
+        }
         if (ssl) {
             smtpExecutor = new SmtpSslExecutor( host, user, password );
         } else {
@@ -30,13 +36,23 @@ public class SmtpEventHandler extends AbstractEventHandler {
     }
 
     @Override
-    public void onEvent() {
+    public void onEvent(Event event) {
 
-        sendMail();
-
+        sendMail( event );
     }
 
-    private void sendMail() {
-        // smtpExecutor.send(  );
+    private void sendMail(Event event) {
+        CommonProperties cp = properties.getCommonProperties();
+        String from = cp.getMailFrom();
+        String to = cp.getMailTo();
+        String cc = cp.getMailCc();
+        String bcc = cp.getMailBcc();
+        String subject="warm!warm!";
+        String text=event.getMsg();
+        try {
+            smtpExecutor.send( from,to, cc,bcc ,subject,text,false,"utf-8");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -4,7 +4,7 @@ package io.github.forezp.netty.rpc.core.config;
  * ${DESCRIPTION}
  *
  * @author fangzhipeng
- *         create 2018-05-28
+ * create 2018-05-28
  **/
 public class CommonProperties {
 
@@ -41,7 +41,22 @@ public class CommonProperties {
     private String monitorRedisExpire;
     private String monitorRedisExpireTimeUnit;
 
-    public static final int CPUS = Math.max(2, Runtime.getRuntime().availableProcessors());
+
+    /**
+     * 邮箱相关配置，to cc 和bcc可配置多个，用";"隔开
+     */
+    private String mailEnable;
+    private String mailHost;
+    private String mailUserName;
+    private String mailUserPassword;
+    private String isMailEnableSsl;
+    private String mailFrom;
+    private String mailTo;
+    private String mailCc;
+    private String mailBcc;
+
+
+    public static final int CPUS = Math.max( 2, Runtime.getRuntime().availableProcessors() );
 
 
     public String getEurekaEnable() {
@@ -242,5 +257,77 @@ public class CommonProperties {
 
     public void setMonitorRedisExpireTimeUnit(String monitorRedisExpireTimeUnit) {
         this.monitorRedisExpireTimeUnit = monitorRedisExpireTimeUnit;
+    }
+
+    public String getMailHost() {
+        return mailHost;
+    }
+
+    public void setMailHost(String mailHost) {
+        this.mailHost = mailHost;
+    }
+
+    public String getMailUserName() {
+        return mailUserName;
+    }
+
+    public void setMailUserName(String mailUserName) {
+        this.mailUserName = mailUserName;
+    }
+
+    public String getMailUserPassword() {
+        return mailUserPassword;
+    }
+
+    public void setMailUserPassword(String mailUserPassword) {
+        this.mailUserPassword = mailUserPassword;
+    }
+
+    public String getIsMailEnableSsl() {
+        return isMailEnableSsl;
+    }
+
+    public void setIsMailEnableSsl(String isMailEnableSsl) {
+        this.isMailEnableSsl = isMailEnableSsl;
+    }
+
+    public String getMailFrom() {
+        return mailFrom;
+    }
+
+    public void setMailFrom(String mailFrom) {
+        this.mailFrom = mailFrom;
+    }
+
+    public String getMailTo() {
+        return mailTo;
+    }
+
+    public void setMailTo(String mailTo) {
+        this.mailTo = mailTo;
+    }
+
+    public String getMailCc() {
+        return mailCc;
+    }
+
+    public void setMailCc(String mailCc) {
+        this.mailCc = mailCc;
+    }
+
+    public String getMailBcc() {
+        return mailBcc;
+    }
+
+    public void setMailBcc(String mailBcc) {
+        this.mailBcc = mailBcc;
+    }
+
+    public String getMailEnable() {
+        return mailEnable;
+    }
+
+    public void setMailEnable(String mailEnable) {
+        this.mailEnable = mailEnable;
     }
 }

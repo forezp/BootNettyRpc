@@ -8,14 +8,17 @@ import com.google.common.eventbus.Subscribe;
  * @author fangzhipeng
  * create 2018-06-19
  **/
-public abstract class AbstractEventHandler implements EventHandler {
+public abstract class AbstractEventHandler {
 
 
-    @Subscribe
-    @Override
-    public void listen(Event event) {
-        onEvent();
+    public AbstractEventHandler() {
+        EventControllerFactory.getAsyncController().register( this );
     }
 
-    public abstract void onEvent();
+    @Subscribe
+    public void listen(Event event) {
+        onEvent( event );
+    }
+
+    public abstract void onEvent(Event event);
 }

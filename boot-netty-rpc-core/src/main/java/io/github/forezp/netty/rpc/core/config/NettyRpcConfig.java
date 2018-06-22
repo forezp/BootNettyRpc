@@ -203,5 +203,30 @@ public class NettyRpcConfig {
 
         properties.setMonitorRedisExpire( monitorRedisExpire );
         properties.setMonitorRedisExpireTimeUnit( monitorRedisExpireTimeUnit );
+
+        /**
+         * 设置邮箱相关的
+         */
+        String mailEnable = env.getProperty( MONITOR_MAIL_ENABLE );
+        String mailHost = env.getProperty( MAIL_HOST );
+        String mailUserName = env.getProperty( MAIL_USER_NAME );
+        String mailUserPassword = env.getProperty( MAIL_USER_PASSWORD );
+        String isMailEnableSsl = env.getProperty( MAIL_IS_ENABLE_SSL );
+        String mailFrom = env.getProperty( MAIL_FROM );
+        String mailTo = env.getProperty( MAIL_TO );
+        String mailCc = env.getProperty( MAIL_CC );
+        String mailBcc = env.getProperty( MAIL_BCC );
+
+        properties.setMailEnable( mailEnable );
+        properties.setMailHost( mailHost );
+        properties.setMailUserName( mailUserName );
+        properties.setMailUserPassword( mailUserPassword );
+        properties.setIsMailEnableSsl( isMailEnableSsl );
+        properties.setMailFrom( mailFrom );
+        properties.setMailTo( mailTo );
+        properties.setMailCc( mailCc );
+        properties.setMailBcc( mailBcc );
+
+
     }
 }

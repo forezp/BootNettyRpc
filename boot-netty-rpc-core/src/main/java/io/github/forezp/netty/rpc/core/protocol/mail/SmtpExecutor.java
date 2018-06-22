@@ -86,9 +86,9 @@ public class SmtpExecutor {
     }
 
 
-//    public static void main(String[] args) throws Exception {
-//        SmtpExecutor smtpExecutor=new SmtpExecutor("smtp.163.com","miles02",""  );
-//        smtpExecutor.send( "miles02@163.com","124746406@qq.com",null,null,"sesee","weeeeeeee",false,"utf8" );
-//
-//    }
+    public static void main(String[] args) throws Exception {
+        SmtpExecutor smtpExecutor=new SmtpExecutor("smtp.163.com","miles02",""  );
+        smtpExecutor.send( "miles02@163.com","124746406@qq.com",null,null,"sesee","weeeeeeee",false,"utf8" );
+
+    }
 }
