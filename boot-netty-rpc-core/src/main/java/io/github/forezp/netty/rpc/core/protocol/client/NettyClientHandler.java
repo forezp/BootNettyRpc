@@ -37,13 +37,6 @@ public class NettyClientHandler extends SimpleChannelInboundHandler<NettyRpcResp
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, final NettyRpcResponse response) throws Exception {
 
-        ThreadPoolExecutor executor = ThreadPoolFactory.createClientPoolExecutor( response.getInterfaze() );
-
-        int coreSize = executor.getCorePoolSize();
-        int activeCount = executor.getActiveCount();
-        int queueSize = executor.getQueue().size();
-        System.out.println( "executor" + executor.toString() + "  coreSize:" + coreSize + " activeCount:" + activeCount + " queueSize :" + queueSize );
-
         ThreadPoolFactory.createClientPoolExecutor( response.getInterfaze() ).submit( new Callable<NettyRpcResponse>() {
 
             @Override
