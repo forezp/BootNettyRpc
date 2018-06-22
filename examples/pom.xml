@@ -5,18 +5,18 @@
     <parent>
         <groupId>io.github.forezp</groupId>
         <artifactId>boot-netty-rpc</artifactId>
-        <version>1.0.4</version>
+        <version>1.0.5</version>
         <relativePath>../</relativePath>
     </parent>
 
     <groupId>io.github.forezp</groupId>
     <artifactId>examples</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <packaging>pom</packaging>
 
     <modules>
 
-     <module>example-rpc-lib</module>
+        <module>example-rpc-lib</module>
         <module>example-eureka-server</module>
         <module>example-rpc-server</module>
         <module>example-rpc-client</module>

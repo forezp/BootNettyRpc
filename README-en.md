@@ -9,7 +9,9 @@ README: [English](https://github.com/forezp/BootNettyRpc/blob/master/README-en.m
 
 BootNettyRpc  is a open resource of rpc with netty and spring boot !
 
-## How to use?
+## How to use? 
+
+ --oops--@Deprecated--
 
 
 ### The server side

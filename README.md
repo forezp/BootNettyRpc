@@ -26,7 +26,7 @@ BootNettyRpc 包括Server端和Client端。
  <dependency>
        <groupId>io.github.forezp</groupId>
         <artifactId>boot-netty-rpc-core</artifactId>
-        <version>1.0.3</version>
+        <version>1.0.5</version>
  </dependency>
  
 ```
@@ -76,7 +76,7 @@ public interface IGreeting {
  <dependency>
        <groupId>io.github.forezp</groupId>
         <artifactId>boot-netty-rpc-core</artifactId>
-        <version>1.0.3</version>
+        <version>1.0.5</version>
 </dependency>
 
 ```
@@ -115,10 +115,11 @@ netty:
 
 
 ```
+@Autowired
+IGreeting greeting;
 
- IGreeting invoker = (IGreeting) Invoker.invoke( IGreeting.class );
- Object result = invoker.sayHello( "sww" );
-
+Object object = greeting.sayHello( "hi" );
+ 
 ```
 
 ## 联系我
@@ -134,8 +135,9 @@ netty:
 - 接入链路追踪
 - 接入监控
 - 接入报警邮箱
+- 优化rpc性能 (需持续优化)
 
 ## 未来计划
 
-- 优化rpc性能
+- 接入多种序列化，做到可配置
 - 接入consule

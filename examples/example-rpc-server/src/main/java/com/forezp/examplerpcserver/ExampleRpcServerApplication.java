@@ -23,12 +23,6 @@ public class ExampleRpcServerApplication {
         SpringApplication.run( ExampleRpcServerApplication.class, args );
     }
 
-    @Autowired
-    NettyRpcProperties serversConfig;
-
-
-    @Autowired
-    DiscoveryClient discoveryClient;
 
     @GetMapping("/test")
     public void test() {
