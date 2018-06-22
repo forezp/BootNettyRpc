@@ -36,7 +36,6 @@ BootNettyRpc 包括Server端和Client端。
 ```
 @SpringBootApplication
 @EnableNettyRpc(basePackages = "com.forezp")
-@RestController
 public class ExampleRpcServerApplication {
 
     public static void main(String[] args) {
@@ -57,15 +56,27 @@ netty.server.port: 6001
 
 ```
 
-作为一个服务提供者，需要对外暴露二方包,并提供接口，比如在本案例中，将所有的对外包括的接口放在二方包example-rpc-lib中，服务调用者
-，只需要提供引用这个包就具有服务的调用能力。比如对外暴露一个服务，需要在接口上写@RpcClient注解,name必填为服务提供者名，rpcClz可不填。
+写一个服务，接口如下：
 
 ```
-@RpcClient(name = "server", rpcClz = "com.forezp.examplerpcserver.api.Greeting")
+
 public interface IGreeting {
 
     String sayHello(String name);
 }
+```
+
+实现类如下：
+
+```
+@Service
+public class Greeting implements IGreeting {
+    @Override
+    public String sayHello(String name) {
+        return "hi "+name;
+    }
+}
+
 ```
 
 ### Client端
@@ -82,7 +93,7 @@ public interface IGreeting {
 ```
 
 
-2.在SpringBoot的启动类加上@EnableNettyRpc注解，如下:
+在SpringBoot的启动类加上@EnableNettyRpc注解，如下:
 
 ```
 @SpringBootApplication
@@ -111,7 +122,16 @@ netty:
 
 ```
 
-4.消费服务：
+
+服务调用者需要需要写一个接口，在接口上写@RpcClient注解,name必填为服务提供者名，rpcClz必填，为服务提供者的类。
+
+```
+@RpcClient(name = "server", rpcClz = "com.forezp.localrpcserver.api.Greeting")
+public interface IGreeting {
+
+    String sayHello(String name);
+}
+```
 
 
 ```
@@ -128,7 +148,7 @@ Object object = greeting.sayHello( "hi" );
 
 ## 已经实现的功能
 
-- rpc
+- rpc(实现同步、异步调用)
 - 负载均衡
 - 接口线程池隔离
 - 接入Eureka
