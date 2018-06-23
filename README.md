@@ -162,5 +162,5 @@ Object object = greeting.sayHello( "hi" );
 - 接入多种序列化，做到可配置
 - 自定义协议，trace的index不需要指定
 - 接入consule
-- 支持spring boot 2.0 S pring Cloud F
+- 支持spring boot 2.0 Spring Cloud F
 
