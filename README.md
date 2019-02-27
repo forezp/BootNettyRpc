@@ -11,6 +11,8 @@ README: [English](https://github.com/forezp/BootNettyRpc/blob/master/README-en.m
 BootNettyRpc 是一个采用Netty实现的Rpc框架，适用于Spring Boot项目，支持Spring Cloud。
 目前支持的版本为Spring Boot 1.5.x，Spring Cloud版本为D和E版本。
 
+重新启动该框架。
+
 
 ## 怎么使用？
 

@@ -5,13 +5,13 @@
     <parent>
         <groupId>io.github.forezp</groupId>
         <artifactId>boot-netty-rpc</artifactId>
-        <version>1.0.5</version>
+        <version>1.0.6</version>
         <relativePath>../</relativePath>
     </parent>
 
     <groupId>io.github.forezp</groupId>
     <artifactId>examples</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <packaging>pom</packaging>
 
     <modules>

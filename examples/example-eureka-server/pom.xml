@@ -5,7 +5,7 @@
 
     <groupId>com.forezp</groupId>
     <artifactId>example-eureka-server</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <packaging>jar</packaging>
 
     <name>example-eureka-server</name>
@@ -15,7 +15,7 @@
     <parent>
         <groupId>io.github.forezp</groupId>
         <artifactId>examples</artifactId>
-        <version>1.0.5</version>
+        <version>1.0.6</version>
         <relativePath>../</relativePath>
     </parent>
     <!--<parent>-->
