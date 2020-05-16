@@ -12,4 +12,5 @@ import io.github.forezp.netty.rpc.core.annotation.RpcClient;
 public interface IGreeting {
 
     String sayHello(String name);
+
 }

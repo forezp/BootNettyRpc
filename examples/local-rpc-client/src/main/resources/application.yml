@@ -1,0 +1,29 @@
+server:
+  port: 7002
+
+netty:
+  clients:
+    - name: server
+      host: localhost
+      port: 6001
+    - name: server
+      host: localhost
+      port: 6001
+
+
+spring:
+  application:
+    name: client
+
+
+monitor:
+  mail:
+    enable:
+      ssl: false
+    host: smtp.163.com
+    password: yourpassword
+    username: miles02
+    from: miles02@163.com
+    to: 124746406@qq.com
+    cc: 88943553@qq.com  #抄送
+    bcc: 88943553@qq.com #密送

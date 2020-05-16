@@ -10,8 +10,11 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 public class Greeting implements IGreeting {
+
     @Override
     public String sayHello(String name) {
-        return "hi "+name;
+        System.out.println("server: Client message received {"+name+"}");
+        return "hi " + name;
     }
+
 }
