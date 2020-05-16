@@ -1,17 +1,19 @@
 server:
   port: 7001
 
-netty.server.name: server
-netty.server.port: 6001
+netty:
+  server:
+    name: server
+    port: 6001
+
 
 spring:
   application:
     name: server
-
   redis:
     host: localhost
     port: 6379
-#    password: ee
+    #password: ee
     database: 1
     pool:
       max-active: 8
@@ -20,19 +22,18 @@ spring:
       min-idle: 0
     timeout: 0
 
+
 monitor:
+  #type: redis
   type: http
   url: http://localhost:7002/postmsg
-
-#monitor:
-#  type: redis
-
-monitor.mail.enable: false
-monitor.mail.host: smtp.163.com
-monitor.mail.username: miles02
-monitor.mail.password: yourpassword
-monitor.mail.enable.ssl:
-monitor.mail.from: miles02@163.com
-monitor.mail.to: 124746406@qq.com
-monitor.mail.cc: 88943553@qq.com
-monitor.mail.bcc: 88943553@qq.com
+  mail:
+    enable:
+      ssl: false
+    host: smtp.163.com
+    password: yourpassword
+    username: miles02
+    from: miles02@163.com
+    to: 124746406@qq.com
+    cc: 88943553@qq.com  #抄送
+    bcc: 88943553@qq.com  #密送
