@@ -3,10 +3,12 @@ server:
 
 netty:
   clients:
-    - name: server
+    -
+      name: server
       host: localhost
       port: 6001
-    - name: server
+    -
+      name: server
       host: localhost
       port: 6001
 
