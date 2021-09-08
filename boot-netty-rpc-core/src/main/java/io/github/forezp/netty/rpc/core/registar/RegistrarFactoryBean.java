@@ -10,7 +10,8 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-public class RegistrarFactoryBean implements ApplicationContextAware, FactoryBean<Object>, InitializingBean, BeanClassLoaderAware {
+public class RegistrarFactoryBean implements ApplicationContextAware, FactoryBean<Object>, InitializingBean,
+        BeanClassLoaderAware {
     private ApplicationContext applicationContext;
     private Class<?> interfaze;
     private MethodInterceptor interceptor;

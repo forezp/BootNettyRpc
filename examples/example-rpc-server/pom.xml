@@ -51,7 +51,7 @@
         <dependency>
             <groupId>io.github.forezp.lib</groupId>
             <artifactId>example-rpc-lib</artifactId>
-            <version>1.0.5</version>
+            <version>${netty.rpc.core}</version>
             <exclusions>
                 <exclusion>
                     <groupId>io.github.forezp</groupId>

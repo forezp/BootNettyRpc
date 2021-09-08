@@ -1,5 +1,7 @@
 package io.github.forezp.netty.rpc.core.annotation;
 
+import org.springframework.stereotype.Component;
+
 import java.lang.annotation.*;
 
 /**
@@ -51,6 +53,7 @@ public @interface RpcClient {
     /**
      * traceId的在方法参数中的位置，默认为0，只能一个类全局配置，不支持单个方法配置。
      * traceId 用于分布式链路追踪，需要手动传入，如果没有这个需求可不做任何配置即可
+     *
      * @return
      */
     int traceIdIndex() default 0;
