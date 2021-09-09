@@ -19,7 +19,7 @@
         <module>example-eureka-server</module>
         <module>example-rpc-server</module>
         <module>example-rpc-client</module>
-        <module>local-rpc-lient</module>
+        <module>local-rpc-client</module>
         <module>local-rpc-server</module>
     </modules>
 
@@ -34,13 +34,11 @@
                 <scope>import</scope>
             </dependency>
 
-
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
-
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -66,7 +64,6 @@
                 <scope>test</scope>
                 <version>${spring-boot.version}</version>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 
